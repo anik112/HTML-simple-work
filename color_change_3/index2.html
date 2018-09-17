@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <h1>some heading</h1>
+  <button>change body color</button>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde magnam provident facilis tempora ut doloribus adipisci molestias, et commodi veritatis. Esse saepe illum excepturi vel, aliquam temporibus molestiae natus necessitatibus.</p>
+  <script>
+    var body = document.body;
+    var colors = ['maroon', 'black', 'green', 'red', 'tomato'] ;
+    function body_color () {
+      body.style.cssText = `background-color: ${colors[ Math.floor( Math.random() * colors.length ) ]}; color: white`;
+    }
+    body_color();
+    var button = document.querySelector('button');
+    button.addEventListener('click', body_color);
+
+
+
+
+
+
+
+    
+  </script>
+</body>
+
+
+
+</html>

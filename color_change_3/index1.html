@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    .hello {
+      color: #333;
+      color: red;
+      color: rgb(255, 255, 255);
+    }
+  </style>
+</head>
+<body>
+  <button>change color</button>
+  <h1>Hello world from feni college</h1>
+<script>
+  var colors = ['red', 'teal', 'yellow', 'tomato', 'salmon']; 
+  var body = document.body;
+  var h1 = document.querySelector('h1');
+  var button = document.querySelector('button');
+  button.addEventListener('click', body_color);
+  function body_color () {
+    body.style.backgroundColor = colors[parseInt(Math.random() * colors.length)];
+    // body.style.backgroundColor = 'rgb(255, 255, 255)';
+  }
+  body_color();
+  h1.style.color = 'white';
+
+
+
+</script>
+</body>
+</html>

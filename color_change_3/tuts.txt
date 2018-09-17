@@ -1,0 +1,9 @@
+Math.PI
+Math.ceil(2.33);
+Math.floor(2.33);
+Math.round(2.33);
+Math.round(2.63);
+parseInt(2.33);
+parseInt(2.88);
+Math.floor(Math.random() * 5)
+parseInt(Math.random() * 5)
