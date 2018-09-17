@@ -1,0 +1,19 @@
+body {
+  width: 80%;
+  margin: 0 auto;
+  padding: 0;
+
+}
+.item {
+  width: 25%;
+  box-sizing: border-box;
+  padding: 5px;
+  background: tomato;
+  color: white;
+}
+.flower {
+  background: teal;
+}
+.fruit {
+  background: maroon;
+}
