@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var ul = document.createElement('ul');
+    var li1 = document.createElement('li');
+    var li2 = document.createElement('li');
+    var li3 = document.createElement('li');
+    ul.appendChild(li1);
+    ul.appendChild(li2);
+    ul.appendChild(li3);
+    var a1 = document.createElement('a');
+    a1.setAttribute('href', '#');
+
+    li1.appendChild(a1);
+    var a2 = document.createElement('a');
+    a2.setAttribute('href', '#');
+    li2.appendChild(a2);
+    var a3 = document.createElement('a');
+    a3.setAttribute('href', '#');
+    li3.appendChild(a3);
+
+    var home = document.createTextNode('Home');
+    a1.appendChild(home);
+
+    var about = document.createTextNode('About');
+    a2.appendChild(about);
+    var contact = document.createTextNode('Contact');
+    a3.appendChild(contact);
+
+    console.log(ul);
+    document.body.appendChild(ul);
+
+    // createElement
+    // createTextNode
+    // appendChild
+    // setAttribute
+
+  </script>
+
+</body>
+</html>

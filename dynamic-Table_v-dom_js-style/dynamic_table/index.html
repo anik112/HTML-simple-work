@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    
+
+    input {
+      padding: 10px;
+      margin: 10px;
+    }
+    button {
+      border: 1px solid salmon;
+      background: teal;
+      color: white;
+      padding: 10px;
+    }
+    table {
+      margin-top: 20px;
+    }
+    table, td, th, tr {
+      border: 1px solid salmon;
+      border-collapse: collapse;
+      padding: 10px;
+    }
+  </style>
+
+</head>
+<body>
+  <h1>Dynamic table</h1>
+  <div>
+    Name: 
+    <input id="name" placeholder="enter user name" type="text">
+  </div>
+  <div>
+    Email:
+    <input id="email" type="text" placeholder="enter user email">
+  </div>
+  <div>
+    <button id="button">Add a people</button>
+  </div>
+
+  <table id="table">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+    <tr>
+      <td>razib</td>
+      <td>razib@gmail.com</td>
+    </tr>
+  </table>
+  <script src="script.js"></script>
+</body>
+</html>
