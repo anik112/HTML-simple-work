@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="bootstrap.min.css"> -->
+</head>
+
+<body>
+
+    <h1>
+        Welcome, Tic Tac Toe
+    </h1>
+
+    <div class="containar">
+
+        <div class="play-bord">
+            <div class="allButton">
+                <input type="button" value="Player 0" onclick="helloWorld(0); setColor('click1')" id="click1">
+                <input type="button" value="Player 0" onclick="helloWorld(1); setColor('click2')" id="click2">
+                <input type="button" value="Player 0" onclick="helloWorld(2); setColor('click3')" id="click3">
+            </div>
+
+            <div class="allButton">
+                <input type="button" value="Player 0" onclick="helloWorld(3); setColor('click4')" id="click4">
+                <input type="button" value="Player 0" onclick="helloWorld(4); setColor('click5')" id="click5">
+                <input type="button" value="Player 0" onclick="helloWorld(5); setColor('click6')" id="click6">
+            </div>
+
+            <div class="allButton">
+                <input type="button" value="Player 0" onclick="helloWorld(6); setColor('click7')" id="click7">
+                <input type="button" value="Player 0" onclick="helloWorld(7); setColor('click8')" id="click8">
+                <input type="button" value="Player 0" onclick="helloWorld(8); setColor('click9')" id="click9">
+            </div>
+        </div>
+        <!-- <audio id="soundEfx" src="justified.wav" style="display: none;"></audio>
+                    <div id="output">
+                
+                    </div> -->
+
+    </div>
+
+    <div class="result" id='rs'>
+
+    </div>
+
+    <script>
+        // soundEfx = document.getElementById("soundEfx");
+        // soundEfx.play();
+
+
+        var tablePosition = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        var countClick = 0;
+
+        var playerOne = [];
+        var playerTwo = [];
+
+        var gameLogic1 = [1, 2, 3];
+        var gameLogic2 = [4, 5, 6];
+        var gameLocic3 = [7, 8, 9];
+        var gameLocic4 = [1, 5, 9];
+        var gameLocic5 = [1, 4, 7];
+        var gameLocic6 = [2, 5, 8];
+        var gameLocic7 = [3, 6, 9];
+        var gameLogic8 = [7, 5, 3];
+
+        var countPlayer1Index = 0;
+        var countPlayer2Index = 0;
+        var coutButtonStatus = 0;
+        var colorChange = 0;
+        var i = 0;
+
+
+
+        function helloWorld(status) {
+
+            var checkPlayer1Win = 0;
+            var checkPlayer2Win = 0;
+            var noOneWin = 0;
+
+            if (countClick < 9) {
+
+                if (coutButtonStatus == 0) {
+                    playerOneClicked(status);
+                    coutButtonStatus = 1;
+                } else if (coutButtonStatus == 1) {
+                    playerTwoClicked(status);
+                    coutButtonStatus = 0;
+                }
+
+            } else {
+                console.log('problem in count click');
+            }
+
+            countClick++;
+
+
+            if (playerOne.includes(gameLogic1[i]) && playerOne.includes(gameLogic1[i + 1]) && playerOne.includes(gameLogic1[i + 2])) {
+                checkPlayer1Win = 1;
+            } else if (playerTwo.includes(gameLogic1[i]) && playerTwo.includes(gameLogic1[i + 1]) && playerTwo.includes(gameLogic1[i + 2])) {
+                checkPlayer2Win = 1;
+            } else {
+                if (playerOne.includes(gameLogic2[i]) && playerOne.includes(gameLogic2[i + 1]) && playerOne.includes(gameLogic2[i + 2])) {
+                    checkPlayer1Win = 1;
+                } else if (playerTwo.includes(gameLogic2[i]) && playerTwo.includes(gameLogic2[i + 1]) && playerTwo.includes(gameLogic2[i + 2])) {
+                    checkPlayer2Win = 1;
+                } else {
+                    if (playerOne.includes(gameLocic3[i]) && playerOne.includes(gameLocic3[i + 1]) && playerOne.includes(gameLocic3[i + 2])) {
+                        checkPlayer1Win = 1;
+                    } else if (playerTwo.includes(gameLocic3[i]) && playerTwo.includes(gameLocic3[i + 1]) && playerTwo.includes(gameLocic3[i + 2])) {
+                        checkPlayer2Win = 1;
+                    } else {
+                        if (playerOne.includes(gameLocic4[i]) && playerOne.includes(gameLocic4[i + 1]) && playerOne.includes(gameLocic4[i + 2])) {
+                            checkPlayer1Win = 1;
+                        } else if (playerTwo.includes(gameLocic4[i]) && playerTwo.includes(gameLocic4[i + 1]) && playerTwo.includes(gameLocic4[i + 2])) {
+                            checkPlayer2Win = 1;
+                        } else {
+                            if (playerOne.includes(gameLocic5[i]) && playerOne.includes(gameLocic5[i + 1]) && playerOne.includes(gameLocic5[i + 2])) {
+                                checkPlayer1Win = 1;
+                            } else if (playerTwo.includes(gameLocic5[i]) && playerTwo.includes(gameLocic5[i + 1]) && playerTwo.includes(gameLocic5[i + 2])) {
+                                checkPlayer2Win = 1;
+                            } else {
+                                if (playerOne.includes(gameLocic6[i]) && playerOne.includes(gameLocic6[i + 1]) && playerOne.includes(gameLocic6[i + 2])) {
+                                    checkPlayer1Win = 1;
+                                } else if (playerTwo.includes(gameLocic6[i]) && playerTwo.includes(gameLocic6[i + 1]) && playerTwo.includes(gameLocic6[i + 2])) {
+                                    checkPlayer2Win = 1;
+                                } else {
+                                    if (playerOne.includes(gameLocic7[i]) && playerOne.includes(gameLocic7[i + 1]) && playerOne.includes(gameLocic7[i + 2])) {
+                                        checkPlayer1Win = 1;
+                                    } else if (playerTwo.includes(gameLocic7[i]) && playerTwo.includes(gameLocic7[i + 1]) && playerTwo.includes(gameLocic7[i + 2])) {
+                                        checkPlayer2Win = 1;
+                                    } else {
+                                        if (playerOne.includes(gameLogic8[i]) && playerOne.includes(gameLogic8[i + 1]) && playerOne.includes(gameLogic8[i + 2])) {
+                                            checkPlayer1Win = 1;
+                                        } else if (playerTwo.includes(gameLogic8[i]) && playerTwo.includes(gameLogic8[i + 1]) && playerTwo.includes(gameLogic8[i + 2])) {
+                                            checkPlayer2Win = 1;
+                                        } else {
+                                            noOneWin = 1;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            if (checkPlayer1Win == 1) {
+                //console.log('player 1 is win::');
+                document.getElementById('rs').innerHTML = '<h2>Player 1 is win !</h2>';
+                document.getElementById('rs').classList.add('win');
+            } else if (checkPlayer2Win == 1) {
+                //console.log('player 2 is win::');
+                document.getElementById('rs').innerHTML = '<h2>Player 2 is win !</h2>';
+                document.getElementById('rs').classList.add('win');
+            } else {
+                if (countClick == 8) {
+                    if (noOneWin == 1) {
+                        //console.log('No one win::');
+                        document.getElementById('rs').innerHTML = '<h2>No one win !</h2>';
+                        document.getElementById('rs').classList.add('noWin');
+                    }
+                }
+            }
+
+        }
+
+
+        function playerOneClicked(getPosition) {
+            playerOne[countPlayer1Index] = tablePosition[getPosition];
+            countPlayer1Index++;
+            // document.getElementById['output'].innerHTML = countPlayer1Index;
+            console.log(getPosition += ': player 1');
+            console.log(playerOne);
+        }
+
+        function playerTwoClicked(getPosition) {
+            playerTwo[countPlayer2Index] = tablePosition[getPosition];
+            countPlayer2Index++;
+            // document.getElementById['output'].innerHTML = countPlayer2Index;
+            console.log(getPosition += ': player 2');
+            console.log(playerTwo);
+        }
+
+        function setColor(btn) {
+            if (countClick <= 9) {
+                var property = document.getElementById(btn);
+                if (colorChange == 0) {
+                    property.style = 'border-color: blue; color: white; background: blue;'
+                    property.value = 'Player 1';
+                    property.disabled = true;
+                    colorChange = 1;
+                } else if (colorChange == 1) {
+                    property.style = 'border-color: red; color: white; background: red;'
+                    property.value = 'Player 2';
+                    property.disabled = true;
+                    colorChange = 0;
+                }
+            }
+        }
+    </script>
+
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+</body>
+
+</html>
