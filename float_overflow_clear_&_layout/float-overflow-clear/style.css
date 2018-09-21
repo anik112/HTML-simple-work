@@ -1,0 +1,14 @@
+
+    .box {
+      width: 200px;
+      height: 200px;
+      background: red;
+      float: left;
+    }
+    #wrapper {
+      overflow: hidden;
+    }
+    p {
+      clear: both;
+    }
+  

@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+#wrapper {
+  background: skyblue;
+}
+header {
+  background: salmon;
+}
+header ul {
+  margin: 0;
+  padding: 0;
+}
+.contentbox {
+  overflow: hidden;
+  background: teal;
+}
+.content  {
+  width: 70%;
+  float: left;
+  background: red;
+}
+aside {
+  width: 30%;
+  float: left;
+  background: blue;
+}
+
+footer {
+  clear: both;
+  background: yellow;
+}
