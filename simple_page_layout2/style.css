@@ -1,0 +1,450 @@
+html{
+    margin: 0px; padding: 0px;
+}
+
+
+body{
+    margin: 0px;
+    padding: 0px;
+    background-color: white;
+}
+
+/* scroll bar */
+
+::-webkit-scrollbar{    /* scroll bar selected */
+    width: 8px;
+}
+
+::-webkit-scrollbar-track{
+    background: white;  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb{  /* scroll bar button selected */
+    background: rgb(44, 44, 44); border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:  rgb(19, 18, 18); 
+}
+
+
+
+/* nav bar ----------------------> (start) */
+
+.nav-bar{
+    margin: 0px;
+    padding: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-sizing: border-box;
+    background-color: teal;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    z-index: 1;
+}
+
+.logo{
+    margin: 0px;
+    padding: 10px;
+    box-sizing: border-box;
+    display: inline;
+}
+
+.logo h1{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 22px;
+    display: inline;
+    color: white;
+}
+
+
+.nav{
+    display: inline;
+    margin: 0px;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.nav-bar a{
+    margin: 0px;
+    padding: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+    box-sizing: border-box;
+    /* border-right: 2px;
+    border-right-style: solid;
+    border-right-color: white;
+    border-right: 100%; */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+}
+
+
+.nav a:last-child{
+    border: none;
+}
+
+.nav a:hover{
+    color: rgb(0, 54, 54);
+    text-decoration: none;
+}
+
+.exit{
+    display: none;
+}
+
+.min-button{
+    display: none;
+}
+
+/* nav bar -----------------------> (end)*/
+
+
+
+/* continer -----------------------> (start)*/
+.continer{
+    margin: 0px;
+    margin-top: 80px;
+    padding: 5px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-around;
+}
+
+.title{
+    margin: 0px; margin-top: 10px; margin-bottom: 10px; padding: 0px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 26px; color: rgba(0, 0, 0, 0.849); display: block;
+}
+
+.sub-title{
+    margin: 0px; margin-top: 5px; margin-bottom: 5px; padding: 0px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 14px; color: rgba(0, 0, 0, 0.616); display: block;
+}
+
+.btn-active{
+    background: rgb(57, 86, 151); color: white;
+}
+
+.post-active{
+    background: rgb(57, 86, 151); color: white;
+}
+
+/*continer ------------------------> (end)*/
+
+
+/* left side -----------------------> (start)*/
+
+.left-side{
+    margin: 0px; margin-left: 5px; padding: 0px; padding-right: 10px;
+    box-sizing: border-box; width: 70%;
+    border-right: 3px; border-right-style: solid; border-right-color: rgba(0, 0, 0, 0.356);
+}
+
+.main-con-img{
+    margin: 0px; padding: 0px; width: 100%;
+    height: 400px;
+}
+.main-con-img img{
+    margin: 0px; padding: 0px; height: 100%; width: 100%;
+}
+.main-left-topContiner{
+    margin: 0px; padding: 0px; padding-top: 15px; box-sizing: border-box;
+}
+.top-text{
+    margin: 0px; padding: 0px; padding-bottom: 10px;
+    box-sizing: border-box; border: 0px;  border-bottom: 1px; border-style: solid; border-color: rgba(0, 0, 0, 0.356);
+}
+
+p{
+    margin: 0px; margin-top: 10px; margin-bottom: 10px; padding: 0px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px; color: rgba(0, 0, 0, 0.616);
+}
+
+
+.main-left-buttomContiner{
+    margin: 0px; padding: 0px; padding-top: 15px; width: 100%;
+    display: flex; flex-flow: wrap;
+}
+
+.buttom-post{
+    margin: 10px; padding: 0px; width: 45%; border: 0px;
+    border-bottom: 1px; border-style: solid; border-color: rgba(0, 0, 0, 0.356);
+}
+
+.buttom-post img{
+    margin: 0px; padding: 0px; height: 200px; width: 100%;
+}
+
+/* left side ------------------------> (end)*/
+
+
+/* right side ------------------------> (start)*/
+
+.right-side{
+    margin: 0px; margin-right: 5px; padding: 0px; padding-left: 10px;
+    box-sizing: border-box; width: 30%;
+}
+
+.right-side header{
+    margin: 0px; padding: 0px;
+    box-sizing: border-box; border: 0px;
+}
+
+.right-side header .title{
+    margin-top: 0px; text-align: center;
+}
+
+.right-side .menu{
+    margin: 0px; margin-top: 5px; padding: 0px;
+}
+
+.right-side .menu button{
+    margin: 0px; padding: 10px 20px 10px 20px; box-sizing: border-box; 
+    border: 0px; width: 49.3%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px; 
+}
+
+.inactive-btn{
+    color: black;
+}
+
+.student-item{
+    margin: 0px; padding: 0px;
+}
+
+.all-student{
+    margin: 0px; padding: 0px; padding-top: 10px; padding-bottom: 10px; box-sizing: border-box;
+}
+
+
+.std-item{
+    margin: 5%; padding: 0px; width: 90%; border: 0px;
+    border-bottom: 2px; border-right-style: solid; border-bottom-color: rgba(0, 0, 0, 0.356);
+    display: flex; justify-content: space-between; margin-top: 30px; border-radius: 5px; background: white;
+}
+
+.std-item img{
+    margin: 0px; padding: 0px; height: 80px; width: 30%; border-radius: 50%; margin-top: 10px;
+}
+
+.std-item button{
+    margin: 0px; padding: 0px; border: 0px; background: white;
+}
+
+.std-item button:hover{
+    text-decoration: underline; text-decoration-color: rgba(0, 0, 0, 0.329); cursor: pointer;
+    text-decoration-style: solid;
+}
+
+.std-content{
+    margin: 0px; padding-left: 5px; box-sizing: border-box;
+}
+
+/* right side ------------------------> (end)*/
+
+
+/* footer --------------------------> (start)*/
+.footer{
+    margin: 0px;
+    margin-top: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: teal;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 18px;
+    color: white;
+    text-align: right;
+}
+
+/* footer --------------------------------> (end)*/
+
+
+
+/* student-profile -----------------------------------> (start)*/
+
+.student-profile{
+    display: block;
+}
+
+.top-pic{
+    margin: 0px; margin-left: 5px; margin-right: 5px; padding: 0px; width: 100%;  display: block;
+    
+}
+
+.cover-pic{
+    margin: auto; padding: 0px; box-sizing: border-box; background: white; width: 80%;
+    height: 300px; display: block; position: relative;
+}
+
+.cover-pic img{
+    margin: 0px; padding: 0px; height: 100%; width: 100%;
+}
+
+.profile-pic{
+    margin: auto; padding: 0px; height:200px; width: 200px;
+    position: absolute; top: 220px; left: 40%; right: 40%;
+}
+
+.profile-pic img{
+    margin: 0px; padding: 0px; height: 100%; width: 100%;
+}
+
+
+.student-basic-information{
+    display: block; margin: auto; margin-top: 60px; width:80%;
+}
+
+
+.student-basic-information :last-child{
+    margin-bottom: 60px;
+}
+
+/* student-profile -----------------------------------> (end)*/
+
+
+/*
+    @author: anik
+    media , max-size:  700px;
+    media , min-size: 300px;
+*/
+
+/* media query ----------------------------------> (start)*/
+
+@media (max-width:700px) and (min-width: 300px){
+    
+    .nav{
+        padding-right: 5px;
+    }
+
+    .min-button{
+        display: block;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .min-button:hover{
+        text-decoration: none;
+    }
+
+    .side-nav a{
+        display: none;
+    }
+
+    .side-nav{
+        width: 0px;
+        height: 100%;
+        padding: 10px;
+        padding-right: 5px;
+        box-sizing: border-box;
+        /* position: fixed; */
+        z-index: 1;
+        background-color: black;
+        transition: .5s;
+        display: none;
+    }
+
+    .mod-nav{
+        width: 80%;
+        margin-left: 20%;
+        padding: 10px;
+        box-sizing: border-box;
+        height: 100%;
+        position: fixed;
+        right: 0px;
+        top: 55px;
+        z-index: 1;
+        background-color: teal;
+        transition: .5s;
+        display: block;
+        overflow: scroll;
+    }
+
+
+    .mod-nav a{
+        display: block;
+    }
+
+    .mod-nav :first-child{
+        display: block;
+        margin: 0px;
+        padding: 0px;
+        padding-right: 10px;
+        box-sizing: border-box;
+        text-align: right;
+        font-size: 16px;
+    }
+
+    .mod-nav a:hover{
+        padding-left: 25px;
+        box-sizing: border-box;
+        transition: .5s;
+        background-color: teal;
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+    }
+
+    .off-mode{
+        display: none;
+    }
+    
+
+    
+    /* continer -----------------------> (start)*/
+    .continer{
+        margin: 0px;
+        margin-top: 80px;
+        padding: 5px;
+        box-sizing: border-box;
+        display: block;
+    }
+
+    .left-side{
+        width: 100%; border: 0px;
+    }
+
+    .main-con-img{
+        height: 200px;
+    }
+
+    img{
+        height: 200px;
+    }
+
+    .right-side{
+        width: 100%; border: 0px;
+    }
+
+    .buttom-post{
+        display: block; width: 100%;
+    }
+
+
+    /* student-profile -----------------------------------> (start)*/
+
+    .cover-pic{
+        margin: auto; padding: 0px; box-sizing: border-box; background: white; width: 90%;
+        height: 150px; display: block; position: relative;
+    }
+
+    .profile-pic{
+        margin: auto; padding: 0px; height: 100px; width: 100px;
+        position: absolute; top: 150px; left: 35%;
+    }
+
+    .student-basic-information{
+        display: block; margin: auto; margin-top: 60px; width: 85%;
+    }
+
+     /* student-profile -----------------------------------> (end)*/
+}
