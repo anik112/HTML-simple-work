@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Auto_table</title>
+</head>
+
+<body>
+
+    <nav class="menu-bar">
+        <ul>
+            <li>
+                <a href="http://">Home</a>
+            </li>
+            <li>
+                <a href="">About</a>
+            </li>
+        </ul>
+    </nav>
+
+
+    <div class="continer m-5">
+
+            <table class="table">
+                <h2>Add Member Record</h2>
+                <caption>add all member record in table...</caption>
+
+                <tbody>
+                    <tr>
+                        <td>Name:</td>
+                        <td>
+                            <input type="text" name="name" id="name" class="form-control" placeholder="Type your name">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>City:</td>
+                        <td>
+                            <input type="text" name="city" id="city" class="form-control" placeholder="Type your city">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Number:</td>
+                        <td>
+                            <input type="text" name="number" id="number" class="form-control" placeholder="Type your number">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="submit" onclick="add_record()" value="Add Information" class="btn btn-outline-success" id="submit">
+                        </td>
+                        <td>
+                            <input type="submit" value="Edit" class="btn btn-outline-success">
+                            <input type="submit" value="Delete" class="btn btn-outline-success" id="delete-btn">
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+
+        <table class="table mt-5">
+            <caption>All Member List:</caption>
+
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Number</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="tbody">
+                <tr>
+                    <td>anik</td>
+                    <td>comilla</td>
+                    <td>01826995639</td>
+                    <td>
+                        <input type="submit" value="Edit" class="btn btn-outline-success">
+                        <input type="submit" value="Delete" class="btn btn-outline-success" id="delete-btn">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

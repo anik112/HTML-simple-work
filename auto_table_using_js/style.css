@@ -1,0 +1,67 @@
+.menu-bar{
+    margin: 0px;
+    padding: 5px 10px 5px 10px;
+    box-sizing: border-box;
+    background-color: rgb(32, 176, 56);
+    color: white;
+}
+
+.menu-bar ul{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.menu-bar ul li{
+    margin: 0px;
+    padding: 0px;
+    display: inline;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.menu-bar ul li a{
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 18px;
+    color: white;
+    padding: 10px 5px 10px 5px;
+    box-sizing: border-box;
+}
+
+.menu-bar ul li a:hover{
+    background: white;
+    color: rgba(0, 0, 0, 0.479);
+}
+
+form{}
+
+form h2{
+    margin-bottom:10px;
+    padding: 5px;
+    box-sizing: border-box;
+    border-bottom: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: rgba(0, 0, 0, 0.349);
+}
+
+caption{
+    caption-side: top;
+    padding-right: 5px;
+    padding-left: 5px;
+    box-sizing: border-box;
+}
+
+.table td{
+    border-top: none;
+}
+
+#delete-btn{
+    border-color: red;
+    color: red;
+}
+
+#delete-btn:hover{
+    background-color: red;
+    color: white;
+}
