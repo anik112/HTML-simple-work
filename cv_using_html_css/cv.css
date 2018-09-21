@@ -1,0 +1,183 @@
+html{
+    background-color: black;
+}
+body{
+    width: 70%;
+    margin: auto;
+    padding: 0px;
+    background-color: white;
+}
+img{
+    height: 100px;
+    width: 100px;
+    border-radius: 80px;
+}
+header{
+    width: 100%;
+    margin: 0px;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: rgb(237, 237, 237);
+    overflow: hidden;
+}
+header ul{
+    list-style: none;
+    font-family: serif;
+    font-size: 16px;
+    margin: 0px;
+    padding: 0px;
+    color: rgb(102, 102, 102);
+}
+
+header ._left_col{
+    float: left;
+    width: 50%;
+    overflow: hidden;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+#con_list{
+    width: 40%;
+    text-align: left;
+    float: right;
+    margin: 0px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#header_sub_fs {
+    float: left;
+    width: 25%;
+    margin: 0px;
+    padding: 0px;
+}
+#header_sub_sec{
+    float: left;
+    width: 75%;
+    margin: 0px;
+    padding-left: 5px;
+    padding-right: 0px;
+    padding-top: 5px;
+    padding-bottom: 0px;
+    box-sizing: border-box;
+}
+header ._right_col{
+    width: 50%;
+    float: right;
+    text-align: right;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+
+.title{
+    font-family: serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+
+.row{
+    width: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 20px;
+    margin-right: 20px; 
+    padding-top: 20px;
+    padding-bottom: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
+    box-sizing: border-box;
+    overflow: hidden;
+    clear: both;
+    border-bottom: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(222, 222, 222);
+}
+
+.left_col{
+    float: left;
+    width: 20%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.right_col{
+    float: left;
+    width: 80%;
+    margin: 0px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    font-size: 15px;
+    font-family: sans-serif;
+    background-color: rgb(243, 243, 243);
+    color: rgb(102, 102, 102);
+}
+.main_pan{
+    background-color: rgb(243, 243, 243);
+    margin: 0px;
+    width: 100%;
+    overflow: hidden;
+}
+.main_pan h3{
+    font-family: monospace;
+    font-size: 18px;
+    font-style: italic;
+    color: rgb(41, 50, 65);
+    margin: 0px;
+    padding-left: 0px;
+    padding-top: 0px;
+    box-sizing: border-box;
+}
+.main_pan h4{
+    font-family: monospace;
+    font-size: 18px;
+    color: rgb(41, 50, 65);
+    margin: 0px;
+    margin: 0px;
+}
+.tol_text{
+    margin: 0px;
+    padding-top: 5px;
+    padding-bottom: 0px;
+    box-sizing: border-box;
+    color: rgb(102, 102, 102);
+}
+.sub_text{
+    margin: 0px;
+    padding: 0px;
+    color: rgb(102, 102, 102);
+    font-style: italic;
+    font-size: 12px;
+}
+
+#s_col{
+    padding-top: 20px;
+    box-sizing: border-box;
+}
+
+#key_col{
+    width: 30%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.main_pan ul{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+.main_pan label, input, textarea{
+    display: block;
+}
+
+label{
+    color: black;
+}
+
+#last_row{
+    border: none;
+}
