@@ -1,0 +1,14 @@
+ul{
+    list-style: none;
+}
+
+ul li{
+    display: inline-block;
+    margin: 0px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+ul li a{
+    color: teal;
+    text-decoration: none;
+}
