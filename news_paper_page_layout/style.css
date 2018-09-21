@@ -1,0 +1,1018 @@
+html{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+    background-color: white;
+}
+
+header{
+    width: 100%;
+    margin: 0px;
+    padding: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    box-sizing: border-box;
+}
+
+.logo{
+    margin: 0px;
+    padding: 0px;
+    display: block;
+}
+
+.logo img{
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 20%;
+}
+
+.sub-title{
+    margin: 0px;
+    padding: 0px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    display: inline;
+}
+
+.sub-title p{
+    margin: 0px;
+    padding: 0px;
+    padding-left: 5px;
+    font-family: monospace;
+    font-size: 16px;
+    display: inline;
+}
+
+
+nav{
+    margin: 10px 0px 10px 0px;
+    padding: 5px 50px 5px 50px;
+    box-sizing: border-box;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hide-bar{
+    display: none;
+}
+
+.icon{
+    margin: 0px;
+    padding: 5px 10px 5px 10px;
+    box-sizing: border-box;
+    height: 30px;
+    width: 40px;
+}
+
+.icon img{
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.main-nav{
+    margin: 0px;
+    padding: 5px 10px 5px 10px;
+    box-sizing: border-box;
+}
+
+.exit{
+    display: none;
+}
+
+.main-nav a{
+    margin: 0px;
+    padding: 0px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 12px;
+    color: white;
+    text-decoration: none;
+    font-style: bold;
+}
+
+.main-nav a:hover{
+    
+    text-decoration: underline;
+    transition: 0.8s;
+    color: rgb(114, 114, 114);
+    text-decoration-color: rgb(114, 114, 114);
+}
+
+.main-container{
+    margin: 0px;
+    margin-top: 20px;
+    padding: 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.row-left{
+    margin: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 50px;
+    box-sizing: border-box;
+    width: 50%;
+    border: 0px;
+    border-right: 2px;
+    border-style: solid;
+    border-color: black;
+}
+
+.row-mid{
+    margin: 0px;
+    padding: 10px;
+    padding-top: 0px;
+    box-sizing: border-box;
+    width: 20%;
+    border: 0px;
+    border-right: 2px;
+    border-style: solid;
+    border-color: black;
+}
+
+.row-mid .sub-mid-col{
+    margin: 0px;
+    margin-bottom: 20px;
+    padding: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+    widows: 100%;
+    border: 0px;
+    border-bottom: 2px;
+    border-style: solid;
+    border-color: black;
+}
+
+.sub-mid-col img{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 60%;
+    display: block;
+}
+
+.sub-mid-col a{
+    margin: 0px;
+    margin-top: 15px;
+    padding: 0px;
+    width: 100%;
+    height: 40%;
+    display: block;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    color: black;
+}
+
+.row-right{
+    margin: 0px;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 30%;
+}
+
+.nav-btn{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.row-right .col{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 500px;
+    overflow: scroll;
+}
+
+.nav-btn button{
+    margin: 0px;
+    padding: 5px 10px 5px 10px;
+    box-sizing: border-box;
+    border: 0px;
+    background: black;
+    color: white;
+    width: 100%;
+    height: 100%;
+}
+
+.nav-btn button:hover{
+    cursor: pointer;
+}
+
+.more-text{
+    display: none;
+}
+
+.more-text ul{
+    margin: 0px;
+    padding: 0px;
+    padding-left: 50px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    list-style: decimal;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+}
+
+.head-col{
+    margin: 0px;
+    margin-right: 0px;
+    padding: 0px;
+}
+
+.row-left .col{
+    width: 100%;
+    margin: 0px;
+    padding: 10px;
+    padding-left: 0px;
+    box-sizing: border-box;
+    /* border-right: 2px;
+    border-right-style: solid;
+    border-right-color: rgb(163, 163, 163); */
+    display: flex;
+    justify-content: space-between;
+    border: 0px;
+    border-bottom: 2px;
+    border-style: solid;
+    border-color: black;
+}
+
+
+.col .sub-col{
+    margin: 0px;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    border: 0px;
+    border-right: 2px;
+    border-style: solid;
+    border-color: black;
+}
+
+.sub-col:last-child{
+    border-right: 0px;
+}
+
+.sub-col img{
+    height: 60%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.sub-col a{
+    width: 100%;
+    height: 40%;
+}
+
+.if-youtube{
+    margin: 0px;
+    padding: 0px;
+    height: 300px;
+    width: 100%;
+}
+
+.if-youtube a{
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+}
+
+.if-youtube img{
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.artical{
+    margin: 0px;
+    margin-right: 0px;
+    padding: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
+    box-sizing: border-box;
+
+    border: 0px;
+    border-bottom: 2px;
+    border-style: solid;
+    border-color: black;
+    border-width: 50%;
+}
+
+.artical a{
+    display: inline;
+    font-family: serif;
+    font-size: 40px;
+    font-style: bold;
+    text-decoration: none;
+    color: black;
+}
+
+.artical p{
+    margin: 0px;
+    padding: 0px;
+    padding-top: 10px;
+    box-sizing: fborder-box;
+    font-family: sans-serif;
+    font-size: 12px;
+}
+
+.sub-col{
+    margin: 0px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.sub-col a{
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+    color: black;
+}
+
+.sub-col a:hover{
+    text-decoration: underline;
+    text-decoration-color: black;
+}
+
+
+/* .search{
+    margin: 0px;
+    padding: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    box-sizing: border-box;
+}
+
+.search img{
+    height: 30px;
+    width: 30px;
+    margin: 0px;
+    padding: 0px;
+} */
+
+
+.drop-down{
+    display: none;
+    height: 0px;
+    width: 0px;
+}
+
+.nav-btn .active-button{
+    background-color: rgb(57, 86, 151);
+    color: white;
+}
+
+.active-text{
+    background-color: rgb(57, 86, 151);
+    color: white;
+    display: block;
+}
+
+footer{
+    margin: 0px;
+    margin-top: 30px;
+    padding: 10px;
+    padding-right: 30px;
+    box-sizing: border-box;
+    background: black;
+    color: white;
+    text-align: right;
+}
+
+footer strong{
+    margin: 0px;
+    padding: 0px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 18px;
+}
+
+
+
+
+
+
+/*
+    Media quray for mid device,
+
+    max-width: 1000px;
+    min-width: 700px;
+
+*/
+
+@media (max-width:1000px) and (min-width: 600px){
+
+    header{
+        margin: 0px;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    nav{
+        margin: 10px 0px 10px 0px;
+        padding: 5px 5px 5px 5px;
+        box-sizing: border-box;
+        background-color: black;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .main-nav{
+        display: block;
+        text-align: center;
+    }
+
+    .hide-bar{
+        display: none;
+    }
+    
+    .exit{
+        display: none;
+    }
+
+    .main-nav a{
+        margin: 0px;
+        padding: 0px;
+        padding-left: 5px;
+        padding-right: 5px;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 12px;
+        color: white;
+        text-decoration: none;
+        font-style: bold;
+        text-align: center;
+    }
+
+    .row-left{
+        padding: 10px;
+        padding-top: 0px;
+        box-sizing: border-box;
+        display: block;
+    }
+
+    .row-left .col{
+        margin: 0px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 0px;
+        padding-right: 0px;
+        box-sizing: border-box;
+    }
+
+    .row-left .col{
+        border:0px;
+        border-bottom: 2px;
+        border-style: solid;
+        border-color: black;
+    }
+
+    .sub-col{
+        width: 50%;
+        margin: 0px;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 0px;
+    }
+
+    .row-left .col .sub-col:first-child{
+        border: 0px;
+        border-right: 2px;
+        border-style: solid;
+        border-color: black;
+    }
+
+    .row-left .col .sub-col:last-child{
+        border: 0px;
+        border-left: 2px;
+        border-style: solid;
+        border-color: black;
+    }
+
+    .sub-col img{
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .sub-col strong{
+        margin: 0px;
+        padding: 0px;
+        font-family: sans-serif;
+        font-size: 14px;
+    }
+
+
+    .row-mid{
+        margin: 0px;
+        padding: 10px;
+        padding-top: 0px;
+        box-sizing: border-box;
+        border: 0px;
+        border-right: 2px;
+        border-style: solid;
+        border-color: black;
+    }
+
+    .row-mid .sub-mid-col{
+        margin: 0px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 0px;
+        padding-bottom: 10px;
+        box-sizing: border-box;
+        width: 100%;
+        border: 0px;
+        border-bottom: 2px;
+        border-style: solid;
+        border-color: black;
+    }
+
+
+    .sub-mid-col img{
+        margin: 0px;
+        padding: 0px;
+        padding-bottom: 10px;
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    .sub-mid-col a{
+        margin: 0px;
+        padding: 0px;
+        text-decoration: none;
+        color: black;
+        font-family: sans-serif;
+        font-size: 14px;
+    }
+
+    .sub-mid-col a:hover{
+        text-decoration: underline;
+    }
+
+
+
+    .row-right{
+        margin: 0px;
+        padding-top: 0px;
+    }
+
+    .row-right .col{
+        margin: 0px;
+        padding: 0px;
+        width: 100%;
+        height: 400px;
+        overflow: scroll;
+    }
+
+    .row-right .nav-btn{
+        margin: 0px;
+        padding: 0px;
+        background-color: black;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .nav-btn button{
+        width: 100%;
+        margin: 0px;
+        padding: 5px 10px 5px 10px;
+        box-sizing: border-box;
+        background: black;
+        color: white;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 12px;
+        font-style: bold;
+        border: 0px;
+    }
+
+    .nav-btn button:hover{
+        transition: 0.5s;
+        color: rgb(160, 160, 160);
+        cursor: pointer;
+    }
+
+    button:first-child{
+        border-right: 2px;
+        border-style: solid;
+        border-color: white;
+    }
+
+    .more-text{
+        height: 100%;
+        width: 100%;
+        overflow: scroll;
+        margin: 0px;
+        padding: 0px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        box-sizing: border-box;
+        background-color: black;
+        color: white;
+    }
+
+    .more-text ul{
+        margin:0px;
+        padding-top: 10px;
+        padding-left: 20px;
+        padding-bottom: 20px;
+        box-sizing: border-box;
+    }
+
+    .more-text ul li{
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        line-height: 25px;
+        list-style-type: decimal;
+        list-style-position: outside;
+    }
+
+    .more-text{
+        display: none;
+    }
+    
+    .active-text{
+        background-color: rgb(57, 86, 151);
+        color: white;
+        display: block;
+    }
+    /* .most-populer-text{
+        height: 100%;
+        width: 100%;
+        overflow: scroll;
+        margin: 0px;
+        padding: 0px;
+        padding-left: 10px;
+        padding-right: 10px;
+     
+     
+        box-sizing: border-box;
+        background-color: black;
+        color: white;
+    } */
+
+}
+
+
+
+
+/*
+    Media quray for sm device,
+
+    max-width: 700px;
+    min-width: 300px;
+
+*/
+
+@media (max-width:600px) and (min-width: 300px){
+
+
+
+    header{
+        margin: 0px;
+        padding: 10px;
+        padding-bottom: 5px;
+        box-sizing: border-box;
+        text-align: center;
+        position: fixed;
+        top: 0px;
+        right: 0px;
+        width: 100%;
+        height: 60px;
+        background: white;
+        z-index: 1;
+    }
+
+    .logo{
+        margin: 0px 10% 0px 10%;
+        padding: 0px;
+        width: 80%;
+        height: 60%;
+    }
+
+    .sub-title{
+        margin: 0px;
+        padding: 5px;
+        padding-bottom: 0px;
+        box-sizing: border-box;
+        height: 30%;
+    }
+
+    header .logo img{
+        height: 100%;
+        width: 80%;
+    }
+
+    nav{
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        background-color: black;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        text-align: left;
+        position: fixed;
+        top: 60px;
+        right: 0px;
+        width: 100%;
+
+    }
+
+    .icon{
+        margin: 0px;
+        margin-top: 7px;
+        cursor: pointer;
+    }
+
+    .hide-bar{
+        margin: 0px;
+        padding: 10px;
+        box-sizing: border-box;
+        display: block;
+    }
+
+    .hide-bar button{
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 16px;
+        color: white;
+        background-color: black;
+        border: 0px;
+        /* border-style: solid;
+        border-color: white;
+        border-radius: 5px; */
+    }
+
+    .hide-bar button:hover{
+        /* transition: 0.5s;
+        background-color: rgb(32, 32, 32); */
+        cursor: pointer;
+    }
+    
+    .main-nav{
+        text-align: center;
+        display:none;
+        position: fixed;
+        top: 103px;
+        left: 0px;
+        width: 60%;
+        height: 100%;
+        margin: 0px;
+        margin-left: 40%;
+        padding: 10px 10px 10px 20px;
+        background: black;
+        overflow: scroll;
+        z-index: 1;
+        /* overflow: hidden; */
+    }
+    
+    .main-nav a{
+        margin: 0px;
+        padding: 0px;
+        padding-left: 5px;
+        padding-right: 5px;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 13px;
+        color: white;
+        text-decoration: none;
+        font-style: bold;
+        text-align: left;
+        display: block;
+    }
+
+   .main-nav .exit{
+        float: right;
+        text-align: center;
+        /* font-size: 14px; */
+    }
+
+
+    .main-container{
+        margin: 0px;
+        padding: 0px;
+        display: block;
+    }
+
+    .row-left{
+        width: 100%;
+        margin: 0px;
+        margin-top: 110px;
+        padding: 10px;
+        padding-top: 0px;
+        box-sizing: border-box;
+        display: block;
+        border: 0px;
+    }
+
+    .row-left .col{
+        margin: 0px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 0px;
+        padding-right: 0px;
+        box-sizing: border-box;
+        border:0px;
+        border-bottom: 2px;
+        border-style: solid;
+        border-color: black;
+        display: block;
+    }
+
+
+    .col .sub-col{
+        width: 100%;
+        margin: 0px;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 0px;
+    }
+
+    /* .row-left .col .sub-col:first-child{
+        border: 0px;
+        border-right: 2px;
+        border-style: solid;
+        border-color: black;
+    } */
+
+    /* .row-left .col .sub-col:last-child{
+        border: 0px;
+        border-left: 2px;
+        border-style: solid;
+        border-color: black;
+    } */
+
+    .sub-col img{
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .sub-col strong{
+        margin: 0px;
+        padding: 0px;
+        font-family: sans-serif;
+        font-size: 14px;
+    }
+
+
+    .row-mid{
+        width: 100%;
+        margin: 0px;
+        padding: 10px;
+        padding-top: 0px;
+        box-sizing: border-box;
+        border: 0px;
+    }
+
+    .row-mid .sub-mid-col{
+        margin: 0px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 0px;
+        padding-bottom: 20px;
+        box-sizing: border-box;
+        width: 100%;
+        border: 0px;
+        border-bottom: 2px;
+        border-style: solid;
+        border-color: black;
+    }
+
+
+    .sub-mid-col img{
+        margin: 0px;
+        padding: 0px;
+        padding-bottom: 10px;
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    .sub-mid-col a{
+        margin: 0px;
+        padding: 0px;
+        text-decoration: none;
+        color: black;
+        font-family: sans-serif;
+        font-size: 14px;
+    }
+
+    .sub-mid-col a:hover{
+        text-decoration: underline;
+    }
+
+
+
+    .row-right{
+        width: 100%;
+        margin: 0px;
+        padding-top: 0px;
+    }
+
+    .row-right .col{
+        margin: 0px;
+        padding: 0px;
+        width: 100%;
+        height: 400px;
+        overflow: scroll;
+    }
+
+    .row-right .nav-btn{
+        margin: 0px;
+        padding: 0px;
+        background-color: black;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .nav-btn button{
+        width: 100%;
+        margin: 0px;
+        padding: 5px 10px 5px 10px;
+        box-sizing: border-box;
+        background: black;
+        color: white;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-style: bold;
+        border: 0px;
+    }
+
+    .nav-btn button:hover{
+        transition: 0.5s;
+        color: rgb(160, 160, 160);
+        cursor: pointer;
+    }
+
+    button:first-child{
+        border-right: 2px;
+        border-style: solid;
+        border-color: white;
+    }
+
+    .more-text{
+        height: 100%;
+        width: 100%;
+        overflow: scroll;
+        margin: 0px;
+        padding: 0px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        box-sizing: border-box;
+        background-color: black;
+        color: white;
+    }
+
+    .more-text ul{
+        margin:0px;
+        padding-top: 10px;
+        padding-left: 20px;
+        padding-bottom: 20px;
+        box-sizing: border-box;
+    }
+
+    .more-text ul li{
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        line-height: 25px;
+        list-style-type: decimal;
+        list-style-position: outside;
+    }
+
+    .more-text{
+        display: none;
+    }
+    
+    .active-text{
+        background-color: rgb(57, 86, 151);
+        color: white;
+        display: block;
+    }
+
+
+}
