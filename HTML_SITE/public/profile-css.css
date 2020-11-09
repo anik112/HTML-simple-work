@@ -1,0 +1,123 @@
+body{
+    background-image: url("background.png");
+    height: 100%;
+    width: 100%;
+}
+
+.break-line{
+    height: 2px;
+    background-color: brown;
+}
+#cover-image{
+    background-image: url("COVER.png");
+    background-color: #00000088;
+    /* Full height */
+    background-size: cover;
+    height: 300px;
+    width: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0px;
+    /*-webkit-filter: blur(0.5px);
+    /* Safari 6.0 - 9.0 */
+    /* filter: blur(5px); */
+}
+
+#fram-cover{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+    z-index: 1;
+}
+.continer{
+    margin: 10px;
+    padding: 0px;
+}
+
+#pro-img{
+    margin-top: 40px;
+    height: 300px;
+    width: 300px;
+}
+
+.nav-link:hover{
+    text-decoration: underline;   
+}
+
+.card-sep{
+    /*background-image: url("");*/
+    /* Full height */
+    height: 150px;
+    width: 100%;
+    z-index: -100;
+}
+
+#post-head-pro-img{
+    height: 40px;
+    width: 40px;
+    margin-left: 5px;
+    margin-right: 5px;
+    float: left;
+}
+
+.resizer{
+    float: left;
+    height: 40px;
+    width: auto;
+    
+}
+#post-aut-name{
+    margin: auto;
+    margin-left: 15px;
+}
+
+#post-image{
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+#post-body{
+    padding:0px;
+}
+
+#post-love-icon{
+    margin: 0px;
+    padding: 0px;
+    height: 40px;
+    width: 40px;
+}
+
+#post-comment-icon{
+    margin: 0px;
+    padding: 0px;
+    height: 40px;
+    width: 40px;
+}
+
+#comment-head-pro-img{
+    height: 20px;
+    width: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+    float: left;
+}
+
+
+#main-head-pro-icon{
+    height: 40px;
+    width: 40px;
+    margin-left: 5px;
+    margin-right: 5px;
+    float: left;
+}
