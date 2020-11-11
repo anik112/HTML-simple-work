@@ -14,20 +14,36 @@ $pageName="My Profile"
                             <ul class="navbar-nav mr-auto">
                                 <li class="nav-item active">
                                     <button class="nav-link btn btn-dark"
-                                        onclick="hideDiv('frm-friends'); showDiv('frm-posts')">Posts <span
+                                        onclick="hideDiv('frm-friends'); showDiv('frm-posts')">Posts |<span
                                             class="sr-only">(current)</span></button>
                                 </li>
                                 <li class="nav-item active">
                                     <button class="nav-link btn btn-dark"
-                                        onclick="hideDiv('frm-posts');showDiv('frm-friends')">Friends <span
+                                        onclick="hideDiv('frm-posts');showDiv('frm-friends')">Friends |<span
                                             class="sr-only">(current)</span></button>
                                 </li>
                                 <li class="nav-item active">
-                                    <button class="nav-link btn btn-dark" onclick="showDiv('frm-about')">About <span
+                                    <button class="nav-link btn btn-dark" onclick="showDiv('frm-about')">Photos |<span
                                             class="sr-only">(current)</span></button>
                                 </li>
                                 <li class="nav-item active">
-                                    <button class="nav-link btn btn-dark" onclick="showDiv('frm-about')">About <span
+                                    <button class="nav-link btn btn-dark" onclick="showDiv('frm-about')">Preregistration |<span
+                                            class="sr-only">(current)</span></button>
+                                </li>
+                                <li class="nav-item active">
+                                    <button class="nav-link btn btn-dark" onclick="showDiv('frm-about')">Schedule |<span
+                                            class="sr-only">(current)</span></button>
+                                </li>
+                                <li class="nav-item active">
+                                    <button class="nav-link btn btn-dark" onclick="showDiv('frm-about')">Billing |<span
+                                            class="sr-only">(current)</span></button>
+                                </li>
+                                <li class="nav-item active">
+                                    <button class="nav-link btn btn-dark" onclick="showDiv('frm-about')">Result |<span
+                                            class="sr-only">(current)</span></button>
+                                </li>
+                                <li class="nav-item active">
+                                    <button class="nav-link btn btn-dark" onclick="showDiv('frm-about')">Teacher Evaluation <span
                                             class="sr-only">(current)</span></button>
                                 </li>
                             </ul>
