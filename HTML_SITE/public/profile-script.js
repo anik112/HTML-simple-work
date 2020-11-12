@@ -1,7 +1,7 @@
 var check=0;
 
 window.onload = function(){
-    document.getElementById("comments").style.display="none";
+    //document.getElementById("comments").style.display="none";
     document.getElementById("frm-friends").style.display="none";
 }
 
@@ -25,6 +25,6 @@ function hideDiv(id){
 
 
 function changeLoveIconInPost(id){
-    document.getElementById(id).src="love-active.png";
+    document.getElementById(id).src="../image/love-active.png";
     // .innerHTML='<img src="love-active.png" alt="" srcset="" id="post-love-icon">';
 }

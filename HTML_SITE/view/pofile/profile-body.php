@@ -1,6 +1,19 @@
 <?php 
 require './view/header.php';
-$pageName="My Profile"
+require './functions/profile.php';
+// get current active id
+$activeId=0;
+if(isset($_SESSION['userId'])){$activeId=$_SESSION['userId'];}
+
+// get friend id from friendlist table
+$myFrindes=getDataUsingColNameAndId($connect,'frendslist',$activeId,'user_id');
+
+// get friend data from friend list
+$frindes=getFriendsData($connect,$userId); 
+
+// declare page titles and user image
+$pageName='My Profile';
+
 ?>
 
 <div class="continer">
@@ -64,14 +77,91 @@ $pageName="My Profile"
 
             <!-- Left section of this screeen -->
             <div class="col-sm-2" id="left-side">
-                <div class="card">
-                    <div class="card-header">Left</div>
-                    <div class="card-body">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam eius,
-                            provident illum beatae voluptatum itaque eveniet labore.</p>
-                    </div>
-                </div>
+            <div class="card">
+            <div class="card-header">About Me:</div>
+            <div class='card-body'>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div class='row'>
+                            <div class=''><img src="../image/icon/account.png" alt="name" srcset=""
+                                    style="width: 20px; hight:20px;"></div>
+                            <div class='col-sm-10 px-3'><?=$sur_name.' [ '.$nik_name.' ]'; $sur_name=null;?></div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class='row'>
+                            <div class=''><img src="../image/icon/mail.png" alt="mail" srcset=""
+                                    style="width: 20px; hight:20px;"></div>
+                            <div class='col-sm-10 px-3'><?=$email; $email=null;?></div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class='row'>
+                            <div class=''><img src="../image/icon/phone-contact.png" alt="number" srcset=""
+                                    style="width: 20px; hight:20px;"></div>
+                            <div class='col-sm-10 px-3'><?=$mobile; $mobile=null;?></div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class='row'>
+                            <div class=''><img src="../image/icon/gender.png" alt="gender" srcset=""
+                                    style="width: 20px; hight:20px;"></div>
+                            <div class='col-sm-10 px-3'><?=$gender; $gender=null;?></div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class='row'>
+                            <div class=''><img src="../image/icon/birthday-reminder.png" alt="date Of birth"
+                                    srcset="" style="width: 20px; hight:20px;"></div>
+                            <div class='col-sm-10 px-3'><?=$birthday; $birthday=null;?></div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class='row'>
+                            <div class=''><img src="../image/icon/location.png" alt="current city" srcset=""
+                                    style="width: 20px; hight:20px;"></div>
+                            <div class='col-sm-10 px-3'><?=$current_city; $current_city=null;?></div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class='row'>
+                            <div class=''><img src="../image/icon/house.png" alt="home town" srcset=""
+                                    style="width: 20px; hight:20px;"></div>
+                            <div class='col-sm-10 px-3'><?=$home_town; $home_town=null;?></div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class='row'>
+                            <div class=''><img src="../image/icon/point-of-interest.png" alt="interest"
+                                    srcset="" style="width: 20px; hight:20px;"></div>
+                            <div class='col-sm-10 px-3'><?=$interested_in; $interested_in=null;?></div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class='row'>
+                            <div class=''><img src="../image/icon/language.png" alt="language" srcset=""
+                                    style="width: 20px; hight:20px;"></div>
+                            <div class='col-sm-10 px-3'><?=$languages; $languages=null;?></div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class='row'>
+                            <div class=''><img src="../image/icon/care.png" alt="relationship" srcset=""
+                                    style="width: 20px; hight:20px;"></div>
+                            <div class='col-sm-10 px-3'><?=$relationship; $relationship=null;?></div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class='row'>
+                            <div class=''><img src="../image/icon/street-name.png" alt="user name" srcset=""
+                                    style="width: 20px; hight:20px;"></div>
+                            <div class='col-sm-10 px-3'><?=$user_name; $user_name=null;?></div>
+                        </div>
+                    </li>
+                </ul>
             </div>
+        </div>
+    </div>
 
             <!-- Middel section of this screen -->
             <div class="col-sm-8" id="mid-size">
@@ -80,15 +170,27 @@ $pageName="My Profile"
                         <div class="card-header">Posts</div>
                         <div class="card-body">
 
-                            <div class="card">
+                        <!-- discribe all data -->
+                <?php 
+                $comId=1;
+                foreach($posts as $post): 
+                // get comment from comment table
+                $getComments=getDataUsingOrderAndId($connect,'`tb_comments_list`',$post->id,'post_id');
+                $commentCount=0;
+                    ?>
+
+                            <div class="card my-3">
                                 <div class="card-header" id="post-head">
                                     <img src="./image/avatar.png" class="rounded-circle mx-auto d-block"
                                         id="post-head-pro-img" alt="...">
                                     <div class="resizer">
-                                        <h3 id="post-aut-name">Anik Paul</h3>
+                                        <h3 id="post-aut-name"><?php echo $userName; ?></h3>
                                     </div>
                                 </div>
                                 <div class="card-body" id="post-body">
+                                    <p style="padding: 5px;">
+                                        <?php echo $post->content; ?>
+                                    </p>
                                     <img src="./image/COVER.png" alt="" srcset="" id="post-image">
                                 </div>
 
@@ -99,16 +201,19 @@ $pageName="My Profile"
                                         <img src="./image/love-inactive.png" alt="" srcset="" id="post-love-icon">
                                         12 Love this
                                     </button>
-                                    <button class="btn btn-light" onclick="toggleBtn('comments')"
+                                    <button class="btn btn-light" onclick="toggleBtn('comments<?php echo $comId; ?>')"
                                         style="float: right; padding: 2px; margin: 2px;">
-                                        13 Comments
+                                        <?php $check=getRowCount($connect,"tb_comments_list","post_id", $post->id); echo $check;?> Comments
                                         <img src="./image/comment.png" alt="" srcset="" id="post-comment-icon">
                                     </button>
                                 </div>
 
                                 <!-- Comment section -->
-                                <div class="comments" id="comments">
+                                <div class="comments" id="comments<?php echo $comId;?>" style="display: none;">
                                     <div class="break-line"></div>
+                                    <?php
+                                        foreach($getComments as $comment):
+                                    ?>
                                     <!-- 1 st comment-->
                                     <div class="card" style="margin: 5px; padding: 1px;">
                                         <div class="card-header" id="post-head"
@@ -116,42 +221,19 @@ $pageName="My Profile"
                                             <img src="./image/avatar.png" class="rounded-circle mx-auto d-block"
                                                 id="comment-head-pro-img" alt="...">
                                             <div class="resizer" style="height: 30px;">
-                                                <p id="post-aut-name">Anik Paul</p>
+                                                <p id="post-aut-name"><?php echo $comment->user_name; ?></p>
                                             </div>
                                         </div>
                                         <div class="card-body" style="margin: 0px; padding: 2px;">
-                                            <p>Lorem ipsum dolor sit ame
-                                                t consectetur adipisicing elit. Debitis tempore, corporis modi rei
-                                                ciendis, obcaecati dolores placeat expedita veritatis minima amet
-                                                consectetur saepe hic vo
-                                                luptatibus quos quibusdam harum volup
-                                                tas deleniti reprehenderit?</p>
+                                            <p><?=$comment->content;?></p>
                                         </div>
                                     </div>
-
-                                    <!-- 2 st comment-->
-                                    <div class="card" style="margin: 5px; padding: 1px;">
-                                        <div class="card-header" id="post-head"
-                                            style="margin: 0px; padding: 1px; height: 30px;">
-                                            <img src="./image/avatar.png" class="rounded-circle mx-auto d-block"
-                                                id="comment-head-pro-img" alt="...">
-                                            <div class="resizer" style="height: 30px;">
-                                                <p id="post-aut-name">Anik Paul</p>
-                                            </div>
-                                        </div>
-                                        <div class="card-body" style="margin: 0px; padding: 2px;">
-                                            <p>Lorem ipsum dolor sit ame
-                                                t consectetur adipisicing elit. Debitis tempore, corporis modi rei
-                                                ciendis, obcaecati dolores placeat expedita veritatis minima amet
-                                                consectetur saepe hic vo
-                                                luptatibus quos quibusdam harum volup
-                                                tas deleniti reprehenderit?</p>
-                                        </div>
-                                    </div>
-
-
+                                    <?php $commentCount++; endforeach;?>
+                                    <!--- End of cpmments -->
                                 </div>
                             </div>
+                            <?php $comId++; endforeach; ?>
+
                         </div>
                     </div>
 

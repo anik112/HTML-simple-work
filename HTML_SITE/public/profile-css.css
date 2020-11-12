@@ -1,5 +1,5 @@
 body{
-    background-image: url("background.png");
+    background-image: url("../image/background.png");
     height: 100%;
     width: 100%;
 }
@@ -115,6 +115,7 @@ body{
     margin-left: 5px;
     margin-right: 5px;
     float: left;
+    
 }
 
 
@@ -124,4 +125,8 @@ body{
     margin-left: 5px;
     margin-right: 5px;
     float: left;
+}
+
+#left-side{
+    padding-left: 1px;
 }

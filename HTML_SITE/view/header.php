@@ -1,6 +1,17 @@
 <?php
 
-$pageName='Deshboard';
+$image='';
+$userId;
+$userName='';
+if(isset($_SESSION['image'])){
+    $image=$_SESSION['image']; // get current user image.
+}
+if(isset($_SESSION['userId'])){
+    $userId=$_SESSION['userId'];
+} // set sesson variable user Id.
+if(isset($_SESSION['name'])){
+    $userName=$_SESSION['name'];
+} // set sessin variable user name.
 
 ?>
 
@@ -39,9 +50,9 @@ $pageName='Deshboard';
             <form class="form-inline my-2 my-md-0">
                 <input class="form-control" type="text" placeholder="Search" style="margin-right: 10px;">
 
-                <button class="btn btn-dark" onclick="" style="font-size: x-large; text-align: center;">
+                <button class="btn btn-dark" onclick="" style="font-size: 14px; text-align: center;">
                     <img src="./image/avatar.png" class="rounded-circle mx-auto d-block" id="main-head-pro-icon" alt="...">
-                    Anik paul
+                    <?php echo $userName; ?>
                 </button>
             </form>
 
