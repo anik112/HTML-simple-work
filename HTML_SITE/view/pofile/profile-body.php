@@ -188,7 +188,7 @@ $pageName='My Profile';
                                     </div>
                                 </div>
                                 <div class="card-body" id="post-body">
-                                    <p style="padding: 5px;">
+                                    <p style="padding: 5px; margin:0px;">
                                         <?php echo $post->content; ?>
                                     </p>
                                     <img src="./image/COVER.png" alt="" srcset="" id="post-image">
@@ -203,7 +203,7 @@ $pageName='My Profile';
                                     </button>
                                     <button class="btn btn-light" onclick="toggleBtn('comments<?php echo $comId; ?>')"
                                         style="float: right; padding: 2px; margin: 2px;">
-                                        <?php $check=getRowCount($connect,"tb_comments_list","post_id", $post->id); echo $check;?> Comments
+                                        12 Comments
                                         <img src="./image/comment.png" alt="" srcset="" id="post-comment-icon">
                                     </button>
                                 </div>
