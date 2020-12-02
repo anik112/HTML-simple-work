@@ -73,6 +73,14 @@ body{
     float: left;
 }
 
+#head-pro-img{
+    height: 150px;
+    width: 150px;
+    margin-left: 5px;
+    margin-right: 5px;
+    float: left;
+}
+
 .resizer{
     float: left;
     height: 40px;
@@ -95,7 +103,7 @@ body{
     padding:0px;
 }
 
-#post-love-icon{
+.post-love-icon{
     margin: 0px;
     padding: 0px;
     height: 40px;
