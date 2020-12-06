@@ -17,7 +17,8 @@ session_start(); // Start the session.
 $routes = [
     'deshbord' => './view/deshbord.php',
     'login' => './view/login.php',
-    'profile'=> './view/pofile/profile-body.php'
+    'profile'=> './view/pofile/profile-body.php',
+    'frnd-profile'=>'./view/pofile/friends-profile.php'
 ];
 
  

@@ -1,6 +1,8 @@
 <?php 
 require './view/header.php';
 require './functions/profile.php';
+require './database/dbConnect.php';
+
 // get current active id
 $activeId=0;
 if(isset($_SESSION['userId'])){$activeId=$_SESSION['userId'];}
