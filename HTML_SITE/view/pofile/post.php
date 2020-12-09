@@ -1,7 +1,29 @@
                 <div id="frm-posts">
                     <div class="card" id="1">
-                        <div class="card-header">Posts</div>
+                        <div class="card-header">
+                            <button class="btn btn-dark border-light" onclick="" style="float: right; padding: 10px; width: 300px">
+                            <h5>Create Post</h5>
+                            </button>
+                        </div>
                         <div class="card-body">
+
+
+                        <div>
+                        <form class="border rounded border-primary p-4">
+                        <div class="form-group">
+                            <textarea name="" id="" rows="3" placeholder="Type content" class="form-control p-2"></textarea>
+                            <small id="emailHelp" class="form-text text-muted">Please share the valid information.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Choose Post image</label>
+                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 200px">Postes</button>
+                        </form>
+
+                        </div>
+
+
 
                         <!-- discribe all data -->
                 <?php 

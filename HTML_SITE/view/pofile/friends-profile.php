@@ -1,6 +1,7 @@
 <?php
 require './view/header.php';
 require './database/dbConnect.php';
+require './function/databaseFunction.php';
 
 $frndID=0;
 if(isset($_GET['id'])){
@@ -69,7 +70,7 @@ $dataList=$getData->fetchAll(PDO::FETCH_OBJ);
             <div class='row'>
                 <div class=''><img src="../image/icon/birthday-reminder.png" alt="date Of birth"
                         srcset="" style="width: 20px; hight:20px;"></div>
-                <div class='col-sm-10 px-3'><?=$data->databirthday;?></div>
+                <div class='col-sm-10 px-3'><?=$data->birthday;?></div>
             </div>
         </li>
         <li class="list-group-item">
@@ -111,7 +112,7 @@ $dataList=$getData->fetchAll(PDO::FETCH_OBJ);
             <div class='row'>
                 <div class=''><img src="../image/icon/street-name.png" alt="user name" srcset=""
                         style="width: 20px; hight:20px;"></div>
-                <div class='col-sm-10 px-3'><?=$data->user_name; ?></div>
+                <div class='col-sm-10 px-3'><?php ?></div>
             </div>
         </li>
     </ul>
@@ -120,9 +121,73 @@ $dataList=$getData->fetchAll(PDO::FETCH_OBJ);
 </div>
 
 <!-- Middel section of this screen -->
-<div class="col-sm-8" id="mid-size">
 
-    <h1>Hi</h1>
+
+<div class="col-sm-8" id="mid-size">
+    <?php 
+    $comId=1;
+    $sql="SELECT * FROM `tb_posts` WHERE user_id=$frndID ORDER BY id DESC;";
+    $getData = $connect->prepare($sql);
+    $getData->execute();
+    $posts=$getData->fetchAll(PDO::FETCH_OBJ);
+    foreach($posts as $post): 
+    // get comment from comment table
+    $getComments=getDataUsingOrderAndId($connect,'`tb_comments_list`',$post->id,'post_id');
+    $commentCount=0;?>
+
+    <div class="card my-3">
+        <div class="card-header" id="post-head">
+            <img src="./image/avatar.png" class="rounded-circle mx-auto d-block" id="post-head-pro-img" alt="...">
+            <div class="resizer">
+                <h3 id="post-aut-name"><?php echo $userName; ?></h3>
+            </div>
+        </div>
+        <div class="card-body" id="post-body">
+            <p style="padding: 5px; margin:0px;">
+                <?php echo $post->content; ?>
+            </p>
+            <img src="./image/COVER.png" alt="" srcset="" id="post-image">
+        </div>
+
+        <!-- Post box Footer -->
+        <div class="card-footer">
+            <button class="btn btn-light" onclick="changeLoveIconInPost('post-love-icon<?php echo $comId;?>')"
+                style="float: left; padding: 2px; margin: 2px;" id="btn-post-love">
+                <img src="./image/love-inactive.png" alt="" srcset="" class="post-love-icon"
+                    id="post-love-icon<?php echo $comId;?>">
+                12 Love this
+            </button>
+            <button class="btn btn-light" onclick="toggleBtn('comments<?php echo $comId; ?>')"
+                style="float: right; padding: 2px; margin: 2px;">
+                12 Comments
+                <img src="./image/comment.png" alt="" srcset="" id="post-comment-icon">
+            </button>
+        </div>
+
+        <!-- Comment section -->
+        <div class="comments" id="comments<?php echo $comId;?>" style="display: none;">
+            <div class="break-line"></div>
+            <?php
+                            foreach($getComments as $comment):
+                        ?>
+            <!-- 1 st comment-->
+            <div class="card" style="margin: 5px; padding: 1px;">
+                <div class="card-header" id="post-head" style="margin: 0px; padding: 1px; height: 30px;">
+                    <img src="./image/avatar.png" class="rounded-circle mx-auto d-block" id="comment-head-pro-img"
+                        alt="...">
+                    <div class="resizer" style="height: 30px;">
+                        <p id="post-aut-name"><?php echo $comment->user_name; ?></p>
+                    </div>
+                </div>
+                <div class="card-body" style="margin: 0px; padding: 2px;">
+                    <p><?=$comment->content;?></p>
+                </div>
+            </div>
+            <?php $commentCount++; endforeach;?>
+            <!--- End of cpmments -->
+        </div>
+    </div>
+    <?php $comId++; endforeach; ?>
 
 </div>
 

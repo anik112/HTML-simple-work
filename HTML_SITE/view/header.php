@@ -30,7 +30,7 @@ if(isset($_SESSION['name'])){
 
 <body>
     <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/profile">
             <h3>LookBook</h3>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02"
