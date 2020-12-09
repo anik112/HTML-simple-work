@@ -27,7 +27,7 @@ $dataList=$getData->fetchAll(PDO::FETCH_OBJ);
         <h1 class="text-center"><?php echo $data->sur_name." ( ".$data->nick_name." )";?></h1>
         <h5 class="text-center"><?php echo "[ ".$data->about_you." ]";?></h5>
         </div>
-    </div>
+    </div> 
 
 <div class="row" id="frm-main">
 
