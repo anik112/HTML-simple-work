@@ -95,12 +95,15 @@ body{
 #post-image{
     margin: 0px;
     padding: 0px;
-    height: 100%;
-    width: 100%;
+    height: 40%;
+    width: 60%;
+    
 }
 
 #post-body{
     padding:0px;
+    text-align: center;
+    background-color: rgb(206, 206, 206);
 }
 
 .post-love-icon{

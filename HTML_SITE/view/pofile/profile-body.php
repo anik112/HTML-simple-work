@@ -5,7 +5,9 @@ require './database/dbConnect.php';
 
 // get current active id
 $activeId=0;
+$userName="";
 if(isset($_SESSION['userId'])){$activeId=$_SESSION['userId'];}
+if(isset($_SESSION['name'])){$userName=$_SESSION['name'];}
 
 // get friend id from friendlist table
 $myFrindes=getDataUsingColNameAndId($connect,'frendslist',$activeId,'user_id');
@@ -53,7 +55,7 @@ $pageName='My Profile';
                                     <button class="nav-link btn btn-dark" onclick="showDiv('frm-about')">Billing |<span
                                             class="sr-only">(current)</span></button>
                                 </li>
-                                <li class="nav-item active">
+                                <li class="nav-item active">    
                                     <button class="nav-link btn btn-dark" onclick="showDiv('frm-about')">Result |<span
                                             class="sr-only">(current)</span></button>
                                 </li>
@@ -72,7 +74,7 @@ $pageName='My Profile';
             <div class="col-sm-12">
                 <div class="card-sep">
                 </div>
-            </div>
+            </div> 
         </div>
 
         <div class="row" id="frm-main">

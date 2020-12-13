@@ -6,19 +6,39 @@
                             </button>
                         </div>
                         <div class="card-body">
+                        
+                        <?php
+                        $post_content=""; 
+                        $file_name="";
+                        if(isset($_POST["post"])){
+                            if(isset($_POST["post-content"]))
+                            $post_content=$_POST["post-content"];
+                        
+                            //if(isset($_FILES["post-image"]))
+                            $file_name=$_POST["post-image"];
 
+                            echo $post_content;
+                            echo $file_name;
+
+                            $sqlInsertPost="INSERT INTO `tb_posts`( `user_id`, `user_name`, `content`, `imsge`,  `likes`, `comment`) VALUES ($activeId,'$userName','$post_content','../images/$file_name',0,0)";
+                            $inserData= $connect->prepare($sqlInsertPost);
+                            $inserData->execute();
+                        }
+
+
+                        ?>
 
                         <div>
-                        <form class="border rounded border-primary p-4">
-                        <div class="form-group">
-                            <textarea name="" id="" rows="3" placeholder="Type content" class="form-control p-2"></textarea>
-                            <small id="emailHelp" class="form-text text-muted">Please share the valid information.</small>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlFile1">Choose Post image</label>
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                        </div>
-                        <button type="submit" class="btn btn-primary" style="width: 200px">Postes</button>
+                        <form class="border rounded border-primary p-4" method="POST" action="<?php $_PHP_SELF ?>">
+                            <div class="form-group">
+                                <textarea name="post-content" id="post-content" rows="3" placeholder="Type content" class="form-control p-2"></textarea>
+                                <small id="emailHelp" class="form-text text-muted">Please share the valid information.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="post-image">Choose Post image</label>
+                                <input type="file" name="post-image" class="form-control-file" id="post-image">
+                            </div>
+                            <button type="submit" name="post" class="btn btn-primary" style="width: 200px">Postes</button>
                         </form>
 
                         </div>
@@ -42,11 +62,12 @@
                                         <h3 id="post-aut-name"><?php echo $userName; ?></h3>
                                     </div>
                                 </div>
-                                <div class="card-body" id="post-body">
-                                    <p style="padding: 5px; margin:0px;">
+                                <p style="padding: 5px; margin: 5px;">
                                         <?php echo $post->content; ?>
-                                    </p>
-                                    <img src="./image/COVER.png" alt="" srcset="" id="post-image">
+                                </p>
+
+                                <div class="card-body border" id="post-body">
+                                    <img src="<?php echo $post->imsge; ?>" alt="<?php echo $post->imsge; ?>" srcset="" id="post-image">
                                 </div>
 
                                 <!-- Post box Footer -->
