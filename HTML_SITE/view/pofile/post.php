@@ -11,18 +11,30 @@
                         $post_content=""; 
                         $file_name="";
                         if(isset($_POST["post"])){
-                            if(isset($_POST["post-content"]))
-                            $post_content=$_POST["post-content"];
-                        
-                            //if(isset($_FILES["post-image"]))
-                            $file_name=$_POST["post-image"];
+                            if(isset($_POST["post-content"])){
+                                $post_content=$_POST["post-content"];
+                                echo $post_content;
+                            }
+                            
+                            if(isset($_FILES["post-image"])){
+                                $file_name=$_FILES["post-image"]["tmp_name"];
+                                echo $file_name;
+                                $target_dir = "uploads/";
+                                $file=$_FILES["post-image"];
+                                echo $file;
+                                $target_file = basename($_FILES["post-image"]["name"]);
+                                echo $target_file;
+                            }
+                            
 
-                            echo $post_content;
-                            echo $file_name;
+                            
+                            
 
-                            $sqlInsertPost="INSERT INTO `tb_posts`( `user_id`, `user_name`, `content`, `imsge`,  `likes`, `comment`) VALUES ($activeId,'$userName','$post_content','../images/$file_name',0,0)";
-                            $inserData= $connect->prepare($sqlInsertPost);
-                            $inserData->execute();
+                            //$sqlInsertPost="INSERT INTO `tb_posts`( `user_id`, `user_name`, `content`, `imsge`,  `likes`, `comment`) VALUES ($activeId,'$userName','$post_content','../images/$file_name',0,0)";
+                            //$inserData= $connect->prepare($sqlInsertPost);
+                            //$inserData->execute();
+
+                            //move_uploaded_file($file,"../images/$file_name");
                         }
 
 

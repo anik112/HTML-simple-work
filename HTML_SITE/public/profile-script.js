@@ -26,5 +26,6 @@ function hideDiv(id){
 
 function changeLoveIconInPost(id){
     document.getElementById(id).src="../image/love-active.png";
+    
     // .innerHTML='<img src="love-active.png" alt="" srcset="" id="post-love-icon">';
 }
