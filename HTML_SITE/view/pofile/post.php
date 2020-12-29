@@ -19,16 +19,10 @@
                             if(isset($_FILES["post-image"])){
                                 $file_name=$_FILES["post-image"]["tmp_name"];
                                 echo $file_name;
-                                $target_dir = "uploads/";
+                                $target_dir = "../images/";
                                 $file=$_FILES["post-image"];
-                                echo $file;
-                                $target_file = basename($_FILES["post-image"]["name"]);
                                 echo $target_file;
                             }
-                            
-
-                            
-                            
 
                             //$sqlInsertPost="INSERT INTO `tb_posts`( `user_id`, `user_name`, `content`, `imsge`,  `likes`, `comment`) VALUES ($activeId,'$userName','$post_content','../images/$file_name',0,0)";
                             //$inserData= $connect->prepare($sqlInsertPost);
