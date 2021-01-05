@@ -16,21 +16,19 @@
                                 $post_content=$_POST["post-content"];
                             }
                             
-<<<<<<< HEAD
                             if(isset($_FILES["images"])){
                                 $target_dir = "uploads/";
                                 $file_tmp=$_FILES['images']['tmp_name'];
                                 $file=$_FILES["images"];
                                 $target_file = basename($_FILES["images"]["name"]);
                                 move_uploaded_file($file_tmp,"./images/$target_file");
-=======
+                            }
                             if(isset($_FILES["post-image"])){
                                 $file_name=$_FILES["post-image"]["tmp_name"];
                                 echo $file_name;
                                 $target_dir = "../images/";
                                 $file=$_FILES["post-image"];
                                 echo $target_file;
->>>>>>> d9603e26af6f3951443ad266d0e60ce81905ee2a
                             }
 
                             $sqlInsertPost="INSERT INTO `tb_posts`( `user_id`, `user_name`, `content`, `imsge`,  `likes`, `comment`) VALUES ($activeId,'$userName','$post_content','./images/$target_file',0,0)";
