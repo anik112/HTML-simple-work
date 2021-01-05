@@ -1,7 +1,7 @@
                 <div id="frm-posts">
                     <div class="card" id="1">
                         <div class="card-header">
-                            <button class="btn btn-dark border-light" onclick="" style="float: right; padding: 10px; width: 300px">
+                            <button class="btn btn-dark border-light" onclick="togleBtnCreatePost('show-create-post')" style="float: right; padding: 10px; width: 200px">
                             <h5>Create Post</h5>
                             </button>
                         </div>
@@ -20,33 +20,34 @@
                                 $target_dir = "uploads/";
                                 $file_tmp=$_FILES['images']['tmp_name'];
                                 $file=$_FILES["images"];
-                                $target_file = basename($_FILES["images"]["name"]);
-                                move_uploaded_file($file_tmp,"./images/$target_file");
-                            }
-                            if(isset($_FILES["post-image"])){
-                                $file_name=$_FILES["post-image"]["tmp_name"];
-                                echo $file_name;
-                                $target_dir = "../images/";
-                                $file=$_FILES["post-image"];
-                                echo $target_file;
+                                if(strlen($file_tmp)>0){
+                                    $target_file = basename($_FILES["images"]["name"]);
+                                    $target_file="./images/$target_file";
+                                    move_uploaded_file($file_tmp,$target_file);
+                                }else{
+                                    $target_file=""; 
+                                }
+                                
                             }
 
-                            $sqlInsertPost="INSERT INTO `tb_posts`( `user_id`, `user_name`, `content`, `imsge`,  `likes`, `comment`) VALUES ($activeId,'$userName','$post_content','./images/$target_file',0,0)";
-                            $inserData= $connect->prepare($sqlInsertPost);
-                            $inserData->execute();
+                            if((strlen($post_content)>0) or (strlen($file_tmp)>0)){
+                                $sqlInsertPost="INSERT INTO `tb_posts`( `user_id`, `user_name`, `content`, `imsge`,  `likes`, `comment`) VALUES ($activeId,'$userName','$post_content','$target_file',0,0)";
+                                $inserData= $connect->prepare($sqlInsertPost);
+                                $inserData->execute();
+                            }
                         }
 
                         ?>
 
-                        <div>
+                        <div id='show-create-post'>
                         <form class="border rounded border-primary p-4" method="POST" action="" enctype="multipart/form-data">
                             <div class="form-group">
-                                <textarea name="post-content" id="post-content" rows="3" placeholder="Type content" class="form-control p-2"></textarea>
+                                <textarea name="post-content" id="post-content" rows="2" placeholder="Type content" class="form-control p-2"></textarea>
                                 <small id="emailHelp" class="form-text text-muted">Please share the valid information.</small>
                             </div>
                             <div class="form-group">
-                                <label for="post-image">Choose Post image</label>
-                                <input type="file" name="images" class="form-control-file" id="post-image">
+                                <label for="ps-img">Choose Post image</label>
+                                <input type="file" name="images" class="form-control-file" id="ps-img">
                             </div>
                             <button type="submit" name="submit" class="btn btn-primary" style="width: 200px">Postes</button>
                         </form>
@@ -64,7 +65,7 @@
                 $commentCount=0;
                 $likeCount=0;
 
-                $sqlgetcomment="SELECT COMMENT FROM `tb_posts` WHERE id=$post->id";
+                $sqlgetcomment="SELECT count(id) as cunt FROM `tb_comments_list` WHERE post_id=$post->id";
                 $inserData=$connect->prepare($sqlgetcomment);
                 $inserData->execute();
                 $commentCount=$inserData->fetchAll(PDO::FETCH_OBJ);
@@ -73,6 +74,18 @@
                 $updateData=$connect->prepare($sqlgetlike);
                 $updateData->execute();
                 $likeCount=$updateData->fetchAll(PDO::FETCH_OBJ);
+
+                if(isset($_POST["comment$post->id"])){
+                    if(isset($_POST["comment-content"])){
+                        $comment_content=$_POST["comment-content"];
+                    }
+                    
+                   if($comment_content!=null){
+                    $sqlInsertComment="INSERT INTO `tb_comments_list`(`post_id`, `user_id`, `user_name`, `content`) VALUES ($post->id,$userId,'$userName','$comment_content')";
+                    $inserData=$connect->prepare($sqlInsertComment);
+                    $inserData->execute() or die("Not insert");
+                   }
+                }
                 ?>
 
                             <div class="card my-3">
@@ -86,11 +99,11 @@
                                 <p style="padding: 5px; margin: 5px;">
                                         <?php echo $post->content; ?>
                                 </p>
-
+                                <?php if($post->imsge != ""):?>
                                 <div class="card-body border" id="post-body">
                                     <img src="<?php echo $post->imsge; ?>" alt="<?php echo $post->imsge; ?>" srcset="" id="post-image">
                                 </div>
-
+                                <?php endif; ?>
                                 <!-- Post box Footer -->
                                 <div class="card-footer">
                                     <button class="btn btn-light" onclick="changeLoveIconInPost('post-love-icon<?php echo $comId;?>')"
@@ -100,14 +113,21 @@
                                     </button>
                                     <button class="btn btn-light" onclick="toggleBtn('comments<?php echo $comId; ?>')"
                                         style="float: right; padding: 2px; margin: 2px;">
-                                        <?php echo $commentCount[0]->COMMENT;?> Comments
+                                        <?php echo $commentCount[0]->cunt;?> Comments
                                         <img src="./image/comment.png" alt="" srcset="" id="post-comment-icon">
                                     </button>
                                 </div>
 
                                 <!-- Comment section -->
                                 <div class="comments" id="comments<?php echo $comId;?>" style="display: none;">
+                    
                                     <div class="break-line"></div>
+                                    <form class="border rounded border-primary p-4" method="POST" action="" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                        <textarea name="comment-content" id="comment-content" rows="2" placeholder="Type content" class="form-control p-2"></textarea>
+                                        </div>
+                                        <button type="submit" name="comment<?php echo $post->id;?>" class="btn btn-primary" style="width: 200px">Comment</button>
+                                    </form>
                                     <?php
                                         foreach($getComments as $comment):
                                     ?>

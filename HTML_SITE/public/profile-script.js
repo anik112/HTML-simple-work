@@ -1,12 +1,26 @@
 var check=0;
+var checkCreatePost=0;
 
 window.onload = function(){
     //document.getElementById("comments").style.display="none";
     document.getElementById("frm-friends").style.display="none";
+    document.getElementById("show-create-post").style.display="none";
+    document.getElementById("frm-posts").style.display="none";
+    //document.getElementById("frm-deshboard").style.display="none";
 }
 
 function showDiv(id){
     document.getElementById(id).style.display="block";
+}
+
+function togleBtnCreatePost(id){
+    if(checkCreatePost==0){
+        document.getElementById(id).style.display="block";
+        checkCreatePost=1;
+    }else if(checkCreatePost==1){
+        document.getElementById(id).style.display="none";
+        checkCreatePost=0;
+    }
 }
 
 function toggleBtn(id){
@@ -21,6 +35,19 @@ function toggleBtn(id){
 
 function hideDiv(id){
     document.getElementById(id).style.display="none";
+}
+
+function showPosts(){
+    document.getElementById("frm-posts").style.display="block";
+    document.getElementById("frm-deshboard").style.display="none";
+    document.getElementById("frm-friends").style.display="none";
+}
+
+
+function showFrinds(){
+    document.getElementById("frm-friends").style.display="block";
+    document.getElementById("frm-deshboard").style.display="none";
+    document.getElementById("frm-posts").style.display="none";
 }
 
 

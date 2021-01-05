@@ -31,12 +31,12 @@ $pageName='My Profile';
                             <ul class="navbar-nav mr-auto">
                                 <li class="nav-item active">
                                     <button class="nav-link btn btn-dark"
-                                        onclick="hideDiv('frm-friends'); showDiv('frm-posts')">Posts |<span
+                                        onclick="showPosts()">Posts |<span
                                             class="sr-only">(current)</span></button>
                                 </li>
                                 <li class="nav-item active">
                                     <button class="nav-link btn btn-dark"
-                                        onclick="hideDiv('frm-posts');showDiv('frm-friends')">Friends |<span
+                                        onclick="showFrinds()">Friends |<span
                                             class="sr-only">(current)</span></button>
                                 </li>
                                 <li class="nav-item active">
@@ -170,7 +170,14 @@ $pageName='My Profile';
             <!-- Middel section of this screen -->
             <div class="col-sm-8" id="mid-size">
 
-                <?php require "./view/pofile/post.php";?>
+                <div id="frm-deshboard">
+                    <?php require "./view/deshboard.php";?>
+                </div>
+                
+
+                <div id="frm-posts">
+                    <?php require "./view/pofile/post.php";?>
+                </div>
 
                 <div id="frm-friends">
                    <?php require "./view/pofile/friends.php";?>
@@ -181,10 +188,29 @@ $pageName='My Profile';
             <!-- Right section of this screeen -->
             <div class="col-sm-2" id="right-side">
                 <div class="card">
-                    <div class="card-header">Right</div>
+                    <div class="card-header">Public Friends</div>
                     <div class="card-body">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam eius,
-                            provident illum beatae voluptatum itaque eveniet labore.</p>
+                       <?php
+                       $sqlFrinds="SELECT * FROM `tb_user_info`";
+                       $selectFrnd=$connect->prepare($sqlFrinds);
+                       $selectFrnd->execute();
+                       $publicFnds=$selectFrnd->fetchAll(PDO::FETCH_OBJ);
+
+                       foreach($publicFnds as $fnds):
+                       ?>
+
+                       <div class="card bg-dark text-white m-2" style="width: 100%;">
+                        <img class="card-img" src="./image/COVER.png" alt="Card image">
+                            <div class="card-img-overlay">
+                            <h5 class="card-title"><a href="/frnd-profile?id=<?=$fnds->id;?>" class="text-light"><?php echo $fnds->sur_name ?></a></h5>
+                         </div>
+                         <div class='card-body'>
+                            <h6 class="m-1"><?php echo $fnds->birthday ?></h6>
+                            <h6 class="m-1"><?php echo $fnds->current_city ?></h6>
+                            <h6 class="m-1"><?php echo $fnds->interested_in ?></h6>
+                        </div>
+                        </div>
+                       <?php endforeach; ?>
                     </div>
                 </div>
             </div>
