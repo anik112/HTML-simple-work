@@ -148,7 +148,12 @@ CREATE TABLE IF NOT EXISTS massage(
     FOREIGN KEY(`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE
 );
 
-
+CREATE TABLE tb_coures_info (
+course_id int(11),
+course_name varchar(150),
+credits varchar(150),
+PRIMARY key (course_id)
+);
 
 
 INSERT INTO `active_status`(`user_id`, `last_activity_date`, `last_activity_time`, `login_status`) VALUES (13,CURDATE(),CURTIME(),false);

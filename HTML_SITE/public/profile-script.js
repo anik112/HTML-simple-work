@@ -6,7 +6,8 @@ window.onload = function(){
     document.getElementById("frm-friends").style.display="none";
     document.getElementById("show-create-post").style.display="none";
     document.getElementById("frm-posts").style.display="none";
-    //document.getElementById("frm-deshboard").style.display="none";
+    document.getElementById("frm-photos").style.display="none";
+    document.getElementById("frm-preregistration").style.display="none";
 }
 
 function showDiv(id){
@@ -41,13 +42,32 @@ function showPosts(){
     document.getElementById("frm-posts").style.display="block";
     document.getElementById("frm-deshboard").style.display="none";
     document.getElementById("frm-friends").style.display="none";
+    document.getElementById("frm-photos").style.display="none";
+    document.getElementById("frm-preregistration").style.display="none";
 }
-
 
 function showFrinds(){
     document.getElementById("frm-friends").style.display="block";
     document.getElementById("frm-deshboard").style.display="none";
     document.getElementById("frm-posts").style.display="none";
+    document.getElementById("frm-photos").style.display="none";
+    document.getElementById("frm-preregistration").style.display="none";
+}
+
+function showPhotos(){
+    document.getElementById("frm-friends").style.display="none";
+    document.getElementById("frm-deshboard").style.display="none";
+    document.getElementById("frm-posts").style.display="none";
+    document.getElementById("frm-photos").style.display="block";
+    document.getElementById("frm-preregistration").style.display="none";
+}
+
+function showPreregistration(){
+    document.getElementById("frm-friends").style.display="none";
+    document.getElementById("frm-deshboard").style.display="none";
+    document.getElementById("frm-posts").style.display="none";
+    document.getElementById("frm-photos").style.display="none";
+    document.getElementById("frm-preregistration").style.display="block";
 }
 
 

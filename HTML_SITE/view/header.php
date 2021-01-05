@@ -26,6 +26,7 @@ if(isset($_SESSION['name'])){
     <title><?php echo $pageName;?></title>
     <link rel="stylesheet" href="./public/bootstrap.min.css">
     <link rel="stylesheet" href="./public/profile-css.css">
+    <link rel="stylesheet" href="./public/view.css">
 </head>
 
 <body>

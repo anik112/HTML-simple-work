@@ -40,11 +40,11 @@ $pageName='My Profile';
                                             class="sr-only">(current)</span></button>
                                 </li>
                                 <li class="nav-item active">
-                                    <button class="nav-link btn btn-dark" onclick="showDiv('frm-about')">Photos |<span
+                                    <button class="nav-link btn btn-dark" onclick="showPhotos()">Photos |<span
                                             class="sr-only">(current)</span></button>
                                 </li>
                                 <li class="nav-item active">
-                                    <button class="nav-link btn btn-dark" onclick="showDiv('frm-about')">Preregistration |<span
+                                    <button class="nav-link btn btn-dark" onclick="showPreregistration()">Preregistration |<span
                                             class="sr-only">(current)</span></button>
                                 </li>
                                 <li class="nav-item active">
@@ -183,6 +183,14 @@ $pageName='My Profile';
                    <?php require "./view/pofile/friends.php";?>
                 </div>
 
+                <div id="frm-photos">
+                    <?php require "./view/photos.php";?>
+                </div>
+
+                <div id="frm-preregistration">
+                    <?php require "./view/preregistration.php";?>
+                </div>
+
             </div>
 
             <!-- Right section of this screeen -->
@@ -196,26 +204,18 @@ $pageName='My Profile';
                        $selectFrnd->execute();
                        $publicFnds=$selectFrnd->fetchAll(PDO::FETCH_OBJ);
 
-                       foreach($publicFnds as $fnds):
-                       ?>
+                       foreach($publicFnds as $fnds):?>
 
-                       <div class="card bg-dark text-white m-2" style="width: 100%;">
-                        <img class="card-img" src="./image/COVER.png" alt="Card image">
-                            <div class="card-img-overlay">
-                            <h5 class="card-title"><a href="/frnd-profile?id=<?=$fnds->id;?>" class="text-light"><?php echo $fnds->sur_name ?></a></h5>
-                         </div>
-                         <div class='card-body'>
-                            <h6 class="m-1"><?php echo $fnds->birthday ?></h6>
-                            <h6 class="m-1"><?php echo $fnds->current_city ?></h6>
-                            <h6 class="m-1"><?php echo $fnds->interested_in ?></h6>
-                        </div>
+                       <div class="card m-2 bg-dark text-center text-white" style="width: 100%; background-color: rgba(245, 245, 245, 0.6);" >
+                            <h5 class="card-title p-1"><a href="/frnd-profile?id=<?=$fnds->id;?>" class="text-light"><?php echo $fnds->sur_name ?></a></h5>
+                            <div class='card-body' style="margin:2px; padding: 0px;">
+                            <img src="./image/avatar.png" class="rounded-circle mx-auto d-block mx-3" id="small-head-pro-img" alt="..."> 
+                            </div>                        
                         </div>
                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 
