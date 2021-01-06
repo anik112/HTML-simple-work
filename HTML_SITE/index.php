@@ -18,7 +18,12 @@ $routes = [
     'deshbord' => './view/deshbord.php',
     'login' => './view/login.php',
     'profile'=> './view/pofile/profile-body.php',
-    'frnd-profile'=>'./view/pofile/friends-profile.php'
+    'frnd-profile'=>'./view/pofile/friends-profile.php',
+    'preregistration'=>'./view/preregistration.php',
+    'friends'=>'./view/pofile/friends.php',
+    'photos'=>'./view/photos.php',
+    'deshboard'=>'./view/deshboard.php',
+    'registration'=>'./view/registration.php'
 ];
 
  

@@ -149,11 +149,17 @@ CREATE TABLE IF NOT EXISTS massage(
 );
 
 CREATE TABLE tb_coures_info (
-course_id int(11),
+course_id varchar(150),
 course_name varchar(150),
 credits varchar(150),
 PRIMARY key (course_id)
 );
+
+INSERT INTO `tb_coures_info`(`course_id`, `course_name`, `credits`) VALUES 
+("CSE-307-CSE(181)","Data Communication","3.0"),
+("CSE-308-CSE(181)","Data Communication Lab","3.0"),
+("GED-303-CSE(181)","Sociology","2.0"),
+("CSE-400A-CSE(201)","Capstone Project/Thesis","2.0");
 
 
 INSERT INTO `active_status`(`user_id`, `last_activity_date`, `last_activity_time`, `login_status`) VALUES (13,CURDATE(),CURTIME(),false);

@@ -108,7 +108,7 @@ if(isset($_POST['submit'])){
 
                                 <div class="row mt-2">
                                     <div class="col text-center m-0">
-                                    <a href="registration" class="btn btn-success" style="width: 100%;">Sing Up</a>
+                                    <a href="/registration" class="btn btn-success" style="width: 100%;">Sing Up</a>
                                     </div>
                                 </div>
                             </div>

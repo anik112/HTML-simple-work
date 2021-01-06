@@ -31,7 +31,7 @@ if(isset($_SESSION['name'])){
 
 <body>
     <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand" href="/profile">
+        <a class="navbar-brand" href="/deshboard">
             <h3>LookBook</h3>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02"
@@ -59,3 +59,27 @@ if(isset($_SESSION['name'])){
 
         </div>
     </nav>
+
+
+<?php // get current active id
+
+require './functions/profile.php';
+require './database/dbConnect.php';
+
+$activeId=0;
+$userName="";
+if(isset($_SESSION['userId'])){$activeId=$_SESSION['userId'];}
+if(isset($_SESSION['name'])){$userName=$_SESSION['name'];}
+
+// get friend id from friendlist table
+$myFrindes=getDataUsingColNameAndId($connect,'frendslist',$activeId,'user_id');
+
+// get friend data from friend list
+$frindes=getFriendsData($connect,$userId); 
+
+// declare page titles and user image
+$pageName='My Profile';
+
+?>
+
+<div class="continer">

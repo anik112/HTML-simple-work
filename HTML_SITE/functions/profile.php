@@ -23,6 +23,7 @@ $user_image=null;
 $user_name=null;
 $password=null;
 $posts=null;
+$photos=null;
 
 // get user data from database
 $getUserData=getAllDataFromTableUsingId($connect,'tb_user_about',$userId);
@@ -41,6 +42,7 @@ foreach($getUserData as $user){
     $interested_in=$user->interested_in;
     $languages=$user->languages;
     $relationship=$user->relationship;
+    $photos=$user->pro_img_link;
 }
 
 
