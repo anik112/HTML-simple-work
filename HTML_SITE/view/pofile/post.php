@@ -22,7 +22,7 @@
                                 $file=$_FILES["images"];
                                 if(strlen($file_tmp)>0){
                                     $target_file = basename($_FILES["images"]["name"]);
-                                    $target_file="./images/$target_file";
+                                    $target_file="C:\Users\carev\Documents/$target_file";
                                     move_uploaded_file($file_tmp,$target_file);
                                 }else{
                                     $target_file=""; 
@@ -70,10 +70,10 @@
                 $inserData->execute();
                 $commentCount=$inserData->fetchAll(PDO::FETCH_OBJ);
 
-                $sqlgetlike="SELECT likes FROM `tb_posts` WHERE id=$post->id";
+                $sqlgetlike="SELECT COUNT(`id`) cut FROM `tb_likes_list` WHERE post_id=$post->id";
                 $updateData=$connect->prepare($sqlgetlike);
                 $updateData->execute();
-                $likeCount=$updateData->fetchAll(PDO::FETCH_OBJ);
+                $likes=$updateData->fetchAll(PDO::FETCH_OBJ);
 
                 if(isset($_POST["comment$post->id"])){
                     if(isset($_POST["comment-content"])){
@@ -81,10 +81,14 @@
                     }
                     
                    if($comment_content!=null){
-                    $sqlInsertComment="INSERT INTO `tb_comments_list`(`post_id`, `user_id`, `user_name`, `content`) VALUES ($post->id,$userId,'$userName','$comment_content')";
-                    $inserData=$connect->prepare($sqlInsertComment);
-                    $inserData->execute() or die("Not insert");
+                        $inserData=$connect->prepare("INSERT INTO `tb_comments_list`(`post_id`, `user_id`, `user_name`, `content`) VALUES ($post->id,$userId,'$userName','$comment_content')");
+                        $inserData->execute() or die("Not insert");
                    }
+                }
+
+                if(isset($_POST["like$post->id"])){
+                    $inserData=$connect->prepare("INSERT INTO `tb_likes_list` (`post_id`, `user_id`, `user_name`) VALUES ($post->id,$userId,'$userName')");
+                    $inserData->execute() or die("Not insert");
                 }
                 ?>
 
@@ -106,11 +110,21 @@
                                 <?php endif; ?>
                                 <!-- Post box Footer -->
                                 <div class="card-footer">
-                                    <button class="btn btn-light" onclick="changeLoveIconInPost('post-love-icon<?php echo $comId;?>')"
-                                        style="float: left; padding: 2px; margin: 2px;" id="btn-post-love">
-                                        <img src="./image/love-inactive.png" alt="" srcset="" class="post-love-icon" id="post-love-icon<?php echo $comId;?>">
-                                        <?php echo $likeCount[0]->likes; ?> Love this
-                                    </button>
+
+                                    <form class="" method="POST" action="" enctype="multipart/form-data">
+                                        <button name="like<?php echo $post->id;?>" class="btn btn-light" onclick="changeLoveIconInPost('post-love-icon<?php echo $comId;?>')"
+                                            style="float: left; padding: 2px; margin: 2px;" id="btn-post-love">
+                                            <?php
+                                              $updateData=$connect->prepare("SELECT `user_id`, `user_name` FROM `tb_likes_list` WHERE post_id=$post->id");
+                                              $updateData->execute();
+                                              $sqlgetlikesList=$updateData->fetchAll(PDO::FETCH_OBJ);
+                                            ?>
+                                            <?php foreach($sqlgetlikesList)
+                                            <img src="./image/love-inactive.png" alt="" srcset="" class="post-love-icon" id="post-love-icon<?php echo $comId;?>">
+                                            <?php echo $likes[0]->cut; ?> Love this
+                                        </button>
+                                    </form>
+
                                     <button class="btn btn-light" onclick="toggleBtn('comments<?php echo $comId; ?>')"
                                         style="float: right; padding: 2px; margin: 2px;">
                                         <?php echo $commentCount[0]->cunt;?> Comments
