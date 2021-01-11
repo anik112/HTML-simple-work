@@ -13,6 +13,22 @@ if(isset($_SESSION['name'])){
     $userName=$_SESSION['name'];
 } // set sessin variable user name.
 
+
+if(isset($_POST['logout'])){
+    // remove all session variables
+    session_unset();
+    // destroy the session
+    session_destroy();
+    header("Location: /login");
+}
+
+if(isset($_POST['search'])){
+    $srcItem=$_POST['search'];
+    $searchData=$connect->prepare("SELECT * FROM `tb_user_info` WHERE sur_name like '$srcItem%'");
+    $searchData->execute();
+    $searchDataList=$searchData->fetchAll(PDO::FETCH_OBJ);
+}
+
 ?>
 
 
@@ -48,13 +64,16 @@ if(isset($_SESSION['name'])){
                     <a class="nav-link" href="#">Notification</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-md-0">
-                <input class="form-control" type="text" placeholder="Search" style="margin-right: 10px;">
-
+            <form class="form-inline my-2 my-md-0" method="POST" action="" enctype="multipart/form-data">
+                <input class="form-control mr-5" type="text" name='search' placeholder="Search" style="margin-right: 10px;">
+                <img src="./image/avatar.png" class="rounded-circle mx-auto d-block" id="main-head-pro-icon" alt="...">
                 <button class="btn btn-dark" onclick="" style="font-size: 14px; text-align: center;">
-                    <img src="./image/avatar.png" class="rounded-circle mx-auto d-block" id="main-head-pro-icon" alt="...">
                     <?php echo $userName; ?>
                 </button>
+            </form>
+            
+            <form class="form-inline my-2 my-md-0" method="POST" action="" enctype="multipart/form-data">
+                <button type='submit' class="btn btn-dark border ml-2" onclick="" name='logout' style="font-size: 14px; text-align: center;">Logout</button>
             </form>
 
         </div>

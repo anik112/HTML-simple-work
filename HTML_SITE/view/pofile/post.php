@@ -83,12 +83,28 @@
                    if($comment_content!=null){
                         $inserData=$connect->prepare("INSERT INTO `tb_comments_list`(`post_id`, `user_id`, `user_name`, `content`) VALUES ($post->id,$userId,'$userName','$comment_content')");
                         $inserData->execute() or die("Not insert");
+                        header("Location: /profile");
                    }
+                }
+
+                $updateData=$connect->prepare("SELECT `user_id`, `user_name` FROM `tb_likes_list` WHERE post_id=$post->id");
+                $updateData->execute();
+                $sqlgetlikesList=$updateData->fetchAll(PDO::FETCH_OBJ);
+
+                $showLove=0;
+                foreach($sqlgetlikesList as $lk){
+                    if(($lk->user_id)==$userId){
+                      $showLove=1;
+                      break;
+                    }else{
+                      $showLove=0;
+                    }
                 }
 
                 if(isset($_POST["like$post->id"])){
                     $inserData=$connect->prepare("INSERT INTO `tb_likes_list` (`post_id`, `user_id`, `user_name`) VALUES ($post->id,$userId,'$userName')");
                     $inserData->execute() or die("Not insert");
+                    header("Location: /profile");
                 }
                 ?>
 
@@ -112,16 +128,16 @@
                                 <div class="card-footer">
 
                                     <form class="" method="POST" action="" enctype="multipart/form-data">
+
                                         <button name="like<?php echo $post->id;?>" class="btn btn-light" onclick="changeLoveIconInPost('post-love-icon<?php echo $comId;?>')"
                                             style="float: left; padding: 2px; margin: 2px;" id="btn-post-love">
-                                            <?php
-                                              $updateData=$connect->prepare("SELECT `user_id`, `user_name` FROM `tb_likes_list` WHERE post_id=$post->id");
-                                              $updateData->execute();
-                                              $sqlgetlikesList=$updateData->fetchAll(PDO::FETCH_OBJ);
-                                            ?>
-                                            <?php foreach($sqlgetlikesList)
+                                            <?php if($showLove==1): ?>
+                                            <img src="./image/love-active.png" alt="" srcset="" class="post-love-icon" id="post-love-icon<?php echo $comId;?>">
+                                            <?php endif; ?>
+                                            <?php if($showLove==0): ?>
                                             <img src="./image/love-inactive.png" alt="" srcset="" class="post-love-icon" id="post-love-icon<?php echo $comId;?>">
-                                            <?php echo $likes[0]->cut; ?> Love this
+                                            <?php endif; ?>
+                                            <?php echo $updateData->rowCount(); ?> Love this
                                         </button>
                                     </form>
 

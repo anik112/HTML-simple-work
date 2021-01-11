@@ -23,7 +23,8 @@ $routes = [
     'friends'=>'./view/pofile/friends.php',
     'photos'=>'./view/photos.php',
     'deshboard'=>'./view/deshboard.php',
-    'registration'=>'./view/registration.php'
+    'registration'=>'./view/registration.php',
+    'search'=>'./view/search.php'
 ];
 
  
