@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2020 at 07:52 PM
--- Server version: 10.1.26-MariaDB
--- PHP Version: 7.1.9
+-- Generation Time: Jan 12, 2021 at 02:51 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -41,8 +40,8 @@ CREATE TABLE `tb_active_status` (
 --
 
 INSERT INTO `tb_active_status` (`id`, `user_id`, `last_activity_date`, `last_activity_time`, `login_status`) VALUES
-(1, 1, '2020-12-09', '23:39:29', 1),
-(2, 2, '2020-08-08', '12:09:16', 0),
+(1, 1, '2021-01-09', '09:57:32', 1),
+(2, 2, '2021-01-06', '18:33:47', 1),
 (3, 3, '2020-08-08', '12:08:20', 1);
 
 -- --------------------------------------------------------
@@ -82,8 +81,41 @@ CREATE TABLE `tb_comments_list` (
 --
 
 INSERT INTO `tb_comments_list` (`id`, `post_id`, `user_id`, `user_name`, `content`) VALUES
-(1, 1, 2, 'Sultana rahaman', 'Hi'),
-(2, 3, 2, 'Sultana rahaman', 'Nice');
+(3, 8, 2, 'Sultana rahaman 	', 'Nice Image'),
+(4, 8, 1, 'Anik paul', 'oipiop'),
+(5, 7, 1, 'Anik paul', 'oipiop'),
+(6, 8, 1, 'Anik paul', 'HIdasd'),
+(7, 7, 1, 'Anik paul', 'HIdasd'),
+(8, 8, 1, 'Anik paul', 'sasdf'),
+(9, 7, 1, 'Anik paul', 'sdfsdf'),
+(17, 21, 2, 'Sultana rahaman', 'asdasd'),
+(18, 21, 2, 'Sultana rahaman', 'asdasd'),
+(19, 21, 1, 'Anik paul', 'ujlkjhnlj'),
+(20, 23, 1, 'Anik paul', 'hi'),
+(21, 23, 2, 'Sultana rahaman', 'asdasd'),
+(22, 24, 1, 'Anik paul', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_coures_info`
+--
+
+CREATE TABLE `tb_coures_info` (
+  `course_id` varchar(150) NOT NULL,
+  `course_name` varchar(150) DEFAULT NULL,
+  `credits` varchar(150) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_coures_info`
+--
+
+INSERT INTO `tb_coures_info` (`course_id`, `course_name`, `credits`) VALUES
+('CSE-307-CSE(181)', 'Data Communication', '3.0'),
+('CSE-308-CSE(181)', 'Data Communication Lab', '3.0'),
+('CSE-400A-CSE(201)', 'Capstone Project/Thesis', '2.0'),
+('GED-303-CSE(181)', 'Sociology', '2.0');
 
 -- --------------------------------------------------------
 
@@ -123,8 +155,8 @@ CREATE TABLE `tb_frends_list` (
 
 INSERT INTO `tb_frends_list` (`id`, `user_id`, `friends_id`) VALUES
 (3, 2, 1),
-(4, 1, 2),
-(5, 1, 3);
+(7, 1, 2),
+(8, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -144,8 +176,7 @@ CREATE TABLE `tb_likes_list` (
 --
 
 INSERT INTO `tb_likes_list` (`id`, `post_id`, `user_id`, `user_name`) VALUES
-(1, 1, 2, 'Sultana rahaman'),
-(2, 3, 2, 'Sultana rahaman');
+(3, 24, 1, 'Anik paul');
 
 -- --------------------------------------------------------
 
@@ -209,10 +240,15 @@ CREATE TABLE `tb_posts` (
 --
 
 INSERT INTO `tb_posts` (`id`, `user_id`, `user_name`, `title`, `content`, `imsge`, `likes`, `comment`) VALUES
-(1, 1, 'Anik paul', 'New online payment method of our company', 'Please check it', '../images/postImage/online payment-scr-s.jpg', 0, ''),
-(2, 1, 'Anik paul', '', '', '../images/6anik_pic.jpg', 0, ''),
-(3, 1, 'Anik paul', '', '', '../images/90avatar.png', 0, ''),
-(4, 1, 'Anik paul', 'asdasdasd', 'asdasdasd', '', 0, '');
+(7, 1, 'Anik paul', '', '', './images/', 0, '0'),
+(8, 2, 'Anik paul', '', 'Screen', './images/screen.jpg', 0, '0'),
+(18, 1, 'Anik paul', '', 'fgdfgdfg', './images/', 0, '0'),
+(19, 1, 'Anik paul', '', 'ghjk453435453', '', 0, '0'),
+(20, 1, 'Anik paul', '', '52345345', './images/databse.jpg', 0, '0'),
+(21, 2, 'Sultana rahaman', '', 'asasdasdad', './images/online payment-scr-s.jpg', 0, '0'),
+(22, 1, 'Anik paul', '', 'asdasdasd', '', 0, '0'),
+(23, 1, 'Anik paul', '', 'sdfsdfsdf', './images/screen.jpg', 0, '0'),
+(24, 1, 'Anik paul', '', 'kkdfsdf', './images/Screenshot_1.jpg', 0, '0');
 
 -- --------------------------------------------------------
 
@@ -222,15 +258,25 @@ INSERT INTO `tb_posts` (`id`, `user_id`, `user_name`, `title`, `content`, `imsge
 
 CREATE TABLE `tb_preregstration` (
   `id` int(11) NOT NULL,
-  `course_id` int(11) DEFAULT NULL,
+  `course_id` varchar(150) DEFAULT NULL,
   `course_name` varchar(150) DEFAULT NULL,
   `credits` varchar(150) DEFAULT NULL,
   `mandatory` varchar(150) DEFAULT NULL,
   `taken` int(11) DEFAULT NULL,
   `adviser` varchar(150) DEFAULT NULL,
-  `semester` varchar(150) DEFAULT NULL,
-  `student` varchar(250) DEFAULT NULL
+  `semester` int(11) DEFAULT NULL,
+  `student` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_preregstration`
+--
+
+INSERT INTO `tb_preregstration` (`id`, `course_id`, `course_name`, `credits`, `mandatory`, `taken`, `adviser`, `semester`, `student`) VALUES
+(1, 'CSE-307-CSE(181)', 'Data Communication', '3.0', 'NO', 0, 'Anik', 8, 1),
+(7, 'GED-303-CSE(181)', 'Sociology', '2.0', 'NO', 0, 'Anik', 8, 1),
+(9, 'CSE-400A-CSE(201)', 'Capstone Project/Thesis', '2.0', 'NO', 0, 'Anik', 8, 1),
+(10, 'CSE-307-CSE(181)', 'Data Communication', '3.0', 'NO', 0, 'Anik', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -240,16 +286,24 @@ CREATE TABLE `tb_preregstration` (
 
 CREATE TABLE `tb_schedule` (
   `id` int(11) NOT NULL,
-  `semester` varchar(150) DEFAULT NULL,
+  `semester` int(11) DEFAULT NULL,
   `student` varchar(150) DEFAULT NULL,
   `adviser` varchar(150) DEFAULT NULL,
-  `course_id` int(11) DEFAULT NULL,
+  `course_id` varchar(150) DEFAULT NULL,
   `course_name` varchar(150) DEFAULT NULL,
   `section` varchar(150) DEFAULT NULL,
   `day` int(11) DEFAULT NULL,
   `times` varchar(15) DEFAULT NULL,
   `room_no` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_schedule`
+--
+
+INSERT INTO `tb_schedule` (`id`, `semester`, `student`, `adviser`, `course_id`, `course_name`, `section`, `day`, `times`, `room_no`) VALUES
+(1, 8, '1', 'Anik', 'CSE-307-CSE(181)', 'Data Communication', '', 1, '12:15', '101'),
+(2, 8, '1', 'Anik', 'CSE-308-CSE(181)', 'Data Communication Leb', '', 1, '12:15', '101');
 
 -- --------------------------------------------------------
 
@@ -303,16 +357,16 @@ CREATE TABLE `tb_user_about` (
   `interested_in` varchar(30) DEFAULT NULL,
   `languages` varchar(10) DEFAULT NULL,
   `relationship` varchar(10) DEFAULT NULL,
-  `religious` varchar(20) DEFAULT NULL
+  `religious` varchar(20) DEFAULT NULL,
+  `pro_img_link` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_user_about`
 --
 
-INSERT INTO `tb_user_about` (`id`, `nick_name`, `intro`, `mobile`, `email`, `birthday`, `gender`, `current_city`, `home_town`, `interested_in`, `languages`, `relationship`, `religious`) VALUES
-(1, 'Anik paul', 'hgf', '01826995639', 'paulanik112@gmail.com', '1997-01-08', 'male', 'Dhaka', 'Dhaka', 'female', 'Bangla', 'single ', 'hg'),
-(2, 'Sultana rahaman', 'jhj', '01524136521', 'anikarehman1998@gmail.com', '2020-08-12', 'femal', 'Dhaka', 'Dhaka', 'male', 'Bangla', 'single ', 'sultana');
+INSERT INTO `tb_user_about` (`id`, `nick_name`, `intro`, `mobile`, `email`, `birthday`, `gender`, `current_city`, `home_town`, `interested_in`, `languages`, `relationship`, `religious`, `pro_img_link`) VALUES
+(1, 'pranta', 'test 02', '0121541561', 'paulanik112@gmail.com', '16/1/2020', 'M', 'Dhaka', 'Dhaka', 'Female', 'Bangla', 'Single', 'Hindu', '');
 
 -- --------------------------------------------------------
 
@@ -360,17 +414,19 @@ CREATE TABLE `tb_user_info` (
   `about_you` varchar(200) DEFAULT NULL,
   `image` blob NOT NULL,
   `user_name` varchar(30) NOT NULL,
-  `password` varchar(30) NOT NULL
+  `password` varchar(30) NOT NULL,
+  `semester` int(11) NOT NULL,
+  `pro_img_link` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_user_info`
 --
 
-INSERT INTO `tb_user_info` (`id`, `sur_name`, `nick_name`, `mobile`, `email`, `birthday`, `gender`, `current_city`, `home_town`, `interested_in`, `languages`, `relationship`, `about_you`, `image`, `user_name`, `password`) VALUES
-(1, 'Anik paul1', 'PAUL', '01826995639', 'paulanik112@gmail.com', '1997-01-08', 'male', 'Dhaka', 'Dhaka', 'female', 'Bangla', 'single ', 'Hi, I am anik. ', 0x2e2e2f696d616765732f39306176617461722e706e67, 'anik112', '@anik112'),
-(2, 'Sultana rahaman', '', '01524136521', 'anikarehman1998@gmail.com', '2020-08-12', 'female ', 'Dhaka', 'Dhaka', 'male', 'Bangla', 'single ', 'Nothing to say', 0x2e2e2f696d616765732f39363733656630383262313162353363343038386335373266326433303035342e6a7067, 'sultana', 'sultana'),
-(3, 'Ashikur rahaman', '', '01852365421', 'anikarehman19988@gmail.com', '2020-09-02', 'male', 'Dhaka', 'Dhaka', 'male', 'Bangla', 'single ', '', 0x2e2e2f696d616765732f30312e6a7067, 'ashikur', 'ashikur');
+INSERT INTO `tb_user_info` (`id`, `sur_name`, `nick_name`, `mobile`, `email`, `birthday`, `gender`, `current_city`, `home_town`, `interested_in`, `languages`, `relationship`, `about_you`, `image`, `user_name`, `password`, `semester`, `pro_img_link`) VALUES
+(1, 'Anik paul', '', '01826995639', 'paulanik112@gmail.com', '1997-01-08', 'male', 'Dhaka', 'Dhaka', 'female', 'Bangla', 'single ', 'Hi, I am anik. ', 0x2e2e2f696d616765732f39306176617461722e706e67, 'anik112', '@anik112', 8, './images/anik_pic.jpg'),
+(2, 'Sultana rahaman', '', '01524136521', 'anikarehman1998@gmail.com', '2020-08-12', 'female ', 'Dhaka', 'Dhaka', 'male', 'Bangla', 'single ', 'Nothing to say', 0x2e2e2f696d616765732f39363733656630383262313162353363343038386335373266326433303035342e6a7067, 'sultana', 'sultana', 1, './images/9673ef082b11b53c4088c572f2d30054.jpg'),
+(3, 'Ashikur rahaman', '', '01852365421', 'anikarehman19988@gmail.com', '2020-09-02', 'male', 'Dhaka', 'Dhaka', 'male', 'Bangla', 'single ', '', 0x2e2e2f696d616765732f30312e6a7067, 'ashikur', 'ashikur', 2, '');
 
 -- --------------------------------------------------------
 
@@ -413,6 +469,12 @@ ALTER TABLE `tb_comments_list`
   ADD UNIQUE KEY `id` (`id`),
   ADD KEY `post_id` (`post_id`),
   ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `tb_coures_info`
+--
+ALTER TABLE `tb_coures_info`
+  ADD PRIMARY KEY (`course_id`);
 
 --
 -- Indexes for table `tb_dues`
@@ -519,25 +581,37 @@ ALTER TABLE `tb_active_status`
 -- AUTO_INCREMENT for table `tb_comments_list`
 --
 ALTER TABLE `tb_comments_list`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `tb_frends_list`
 --
 ALTER TABLE `tb_frends_list`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tb_likes_list`
 --
 ALTER TABLE `tb_likes_list`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tb_posts`
 --
 ALTER TABLE `tb_posts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT for table `tb_preregstration`
+--
+ALTER TABLE `tb_preregstration`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `tb_schedule`
+--
+ALTER TABLE `tb_schedule`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_user_gallery`
