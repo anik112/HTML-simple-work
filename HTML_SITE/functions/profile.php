@@ -42,7 +42,7 @@ foreach($getUserData as $user){
     $interested_in=$user->interested_in;
     $languages=$user->languages;
     $relationship=$user->relationship;
-    $photos=$user->pro_img_link;
+    $photos='';//$user->pro_img_link;
 }
 
 

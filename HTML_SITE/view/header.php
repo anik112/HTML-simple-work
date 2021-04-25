@@ -43,6 +43,8 @@ if(isset($_POST['search'])){
     <link rel="stylesheet" href="./public/bootstrap.min.css">
     <link rel="stylesheet" href="./public/profile-css.css">
     <link rel="stylesheet" href="./public/view.css">
+    <link rel="stylesheet" href="./public/ac-panel.css">
+    <link href="./public/font-awesome.css" rel="stylesheet">
 </head>
 
 <body>
@@ -61,7 +63,7 @@ if(isset($_POST['search'])){
                     <a class="nav-link" href="#">Chat <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Notification</a>
+                    <a class="nav-link" href="\notification">Notification</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-md-0" method="POST" action="" enctype="multipart/form-data">
@@ -78,7 +80,6 @@ if(isset($_POST['search'])){
 
         </div>
     </nav>
-
 
 <?php // get current active id
 

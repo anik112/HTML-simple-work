@@ -24,7 +24,14 @@ $routes = [
     'photos'=>'./view/photos.php',
     'deshboard'=>'./view/deshboard.php',
     'registration'=>'./view/registration.php',
-    'search'=>'./view/search.php'
+    'search'=>'./view/search.php',
+    'adLogin'=>'./view/admin/adLogin.php',
+    'acPanel'=>'./view/accounts/ac-panel.php',
+    'adPanel'=>'./view/admin/ad-panel.php',
+    'billing'=>'./view/billing.php',
+    'result'=>'./view/result.php',
+    'notification'=>'./view/notification.php',
+    'editProfile'=>'./view/pofile/edit-profile.php'
 ];
 
  

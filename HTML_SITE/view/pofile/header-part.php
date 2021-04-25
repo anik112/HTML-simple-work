@@ -23,15 +23,16 @@
                                             class="sr-only">(current)</span></button>
                                 </li>
                                 <li class="nav-item active">
-                                    <button class="nav-link btn btn-dark" onclick="showDiv('frm-about')">Billing |<span
-                                            class="sr-only">(current)</span></button>
+                                    <a class="nav-link btn btn-dark" href="/billing">Billing |</a>
                                 </li>
-                                <li class="nav-item active">    
-                                    <button class="nav-link btn btn-dark" onclick="showDiv('frm-about')">Result |<span
-                                            class="sr-only">(current)</span></button>
+                                <li class="nav-item active"> 
+                                    <a class="nav-link btn btn-dark" href="/result">Result |</a>   
                                 </li>
                                 <li class="nav-item active">
-                                    <button class="nav-link btn btn-dark" onclick="showDiv('frm-about')">Teacher Evaluation <span
+                                    <a class="nav-link btn btn-dark" href="/editProfile">Edit Profile |</a> 
+                                </li>
+                                <li class="nav-item active">
+                                    <button class="nav-link btn btn-dark" onclick="showDiv('frm-about')">Logout<span
                                             class="sr-only">(current)</span></button>
                                 </li>
                             </ul>

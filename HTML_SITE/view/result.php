@@ -127,111 +127,156 @@ $getCourses=$getCourse->fetchAll(PDO::FETCH_OBJ);
 
 
     <div class="col-sm-8" id="mid-size">
-        <table class="table" style=' background-color: rgba(255, 255, 255,  0.5); '>
-        <h2 class="mt-3">Offer Course</h2>
+
+    <div class="card">
+        <?php 
+        $runingSemester=0;
+        $studentId='';
+        $totalCraditCompleted=0;
+
+        $getTakenUserDoc=$connect->prepare("SELECT `sur_name`, `nick_name`, `runing_semester`, `student_id` FROM `tb_user_info` WHERE id=$activeId");
+        $getTakenUserDoc->execute();
+        $getTakenUserDocument=$getTakenUserDoc->fetchAll(PDO::FETCH_OBJ);
+        foreach($getTakenUserDocument as $c){
+            $runingSemester=$c->runing_semester;
+            $studentId=$c->student_id;
+        }
+
+
+        $getCredit=$connect->prepare("SELECT sum(`credits`) as credits FROM `tb_compltd_semester` WHERE semester=$runingSemester and studentID=$studentId;");
+        $getCredit->execute();
+        $getCredits=$getCredit->fetchAll(PDO::FETCH_OBJ);
+        foreach($getCredits as $c){
+            $totalCraditCompleted=$c->credits;
+        }
+
+
+        $numberOfCraditBeforThisSemester=0;
+        $getBeforCredit=$connect->prepare("SELECT sum(`credits`) as credits FROM `tb_compltd_semester` WHERE semester!=$runingSemester and studentID=$studentId;");
+        $getBeforCredit->execute();
+        $getBeforCredits=$getBeforCredit->fetchAll(PDO::FETCH_OBJ);
+        foreach($getBeforCredits as $c){
+            $numberOfCraditBeforThisSemester=$c->credits;
+        }
+
+
+        $numberOfCourse=0;
+        $getNumberOfCourse=$connect->prepare("SELECT count(`course`) as credits FROM `tb_compltd_semester` WHERE semester=$runingSemester and studentID=$studentId;");
+        $getNumberOfCourse->execute();
+        $getNumberOfCourses=$getNumberOfCourse->fetchAll(PDO::FETCH_OBJ);
+        foreach($getNumberOfCourses as $c){
+            $numberOfCourse=$c->credits;
+        }
+
+        ?>
+
+        <div class="card-header" style="text-align: center;"><h4>Result History</h4></div>
+        <div class="card-body">
+            <h5>Semester: <?php echo $runingSemester;?></h5>
+            <h5>Student: <?php echo $userName;?> (<?php echo $studentId; ?>)</h5>
+            <h5>Adviser: <?php echo 'Anik' ?></h5>
+            <hr class="style2">
+            <h5>CGPA: <?php  ?></h5>
+            <h5>Total Credit Hours Completed: <?php echo $totalCraditCompleted; ?></h5>
+            <h5>Number of Courses Completed Before This Semester: <?php echo $numberOfCraditBeforThisSemester; ?></h5>
+            <h5>Number of Courses Completed in This Semester: <?php echo '0'; ?></h5>
+            <h5>Total Number of Courses Completed: <?php echo $numberOfCourse;  ?></h5>
+        </div>
+    </div>
+
+
+    <div class="card mt-3">
+        <div class="card-header" style="text-align: center;"><h4>Semester-wise GPA</h4></div>
+        <div class="card-body">
+        <table class="table" style='background-color: rgba(255, 255, 255, 0.3);'>
             <thead>
                 <tr>
-                    <th scope="col">Course ID</th>
-                    <th scope="col">Course Name</th>
-                    <th scope="col">Credits</th>
-                    <th scope="col">Mandatory?</th>
-                    <th scope="col">Taken?</th>
+                    <th scope="col">Semester</th>
+                    <th scope="col">Credit Hours Completed</th>
+                    <th scope="col">GPA</th>
+                    <th scope="col">CGPA</th>
                 </tr>
             </thead>
             <tbody>
-                <?php
-
-                if(isset($_POST["takenCourse"])){
-                    $getSemester=$connect->prepare("SELECT `runing_semester` FROM `tb_user_info` WHERE id=$activeId");
-                    $getSemester->execute();
-                    $getSemesterInfo=$getSemester->fetchAll(PDO::FETCH_OBJ);
-                    foreach($getSemesterInfo as $smsInfo){
-                        $semester=$smsInfo->runing_semester;
-                        break;
-                    }
-
-                    if(isset($_POST["course_id"])){$cus_id=$_POST["course_id"];}
-                    if(isset($_POST["course_name"])){$cus_name=$_POST["course_name"];}
-                    if(isset($_POST["credits"])){$cus_crds=$_POST["credits"];}
-
-                    if($activeId>0 && $semester>0){
-                        $sqlTakeCourse="INSERT INTO `tb_preregstration`(`course_id`, `course_name`, `credits`, `mandatory`, `taken`, `adviser`, `semester`, `student`) 
-                        VALUES ('$cus_id','$cus_name','$cus_crds','NO','YES','Anik',$semester,$activeId)";
-                        $sqlTakeCourses=$connect->prepare($sqlTakeCourse);
-                        $sqlTakeCourses->execute() or die("Not insert"); 
-                    } 
-                } 
-                foreach($getCourses as $course):
-                $getTakenCourse=$connect->prepare("SELECT count(id) cut FROM `tb_preregstration` WHERE student=$activeId AND course_id='$course->course_id'" );
-                $getTakenCourse->execute();
-                $getTakenCourses=$getTakenCourse->fetchAll(PDO::FETCH_OBJ);
-                foreach($getTakenCourses as $c){
-                    $getTakenCourse=$c->cut;
-                }
+            <?php 
+            $getSemesterWiseData=$connect->prepare("SELECT `semester`, sum(`cgpa`) as gpa, count(`course`) as sumCourse, sum(`cradit`) as sumCadits FROM `tb_studied_info` 
+                                                    WHERE  student=$studentId group by semester;");
+            $getSemesterWiseData->execute();
+            $getSemesterWiseDatas=$getSemesterWiseData->fetchAll(PDO::FETCH_OBJ);
+            
+            foreach($getSemesterWiseDatas as $c):
             ?>
-                <?php if($getTakenCourse==0): ?>
-                <tr>
+               <tr>
                     <th scope="row">
-                        <?php echo $course->course_id;?>
+                        <?php echo $c->semester;?>
                     </th>
                     <td>
-                        <?php echo $course->course_name;?>
+                        <?php echo $c->sumCadits;?>
                     </td>
                     <td>
-                        <?php echo $course->credits;?>
+                        <?php echo $c->gpa;?>
                     </td>
-                    <td>NO</td>
                     <td>
-                        <form class="" method="POST" action="" enctype="multipart/form-data">
-                            <input type="hidden" id="course_id" name="course_id" value="<?php echo $course->course_id;?>">
-                            <input type="hidden" id="course_name" name="course_name" value="<?php echo $course->course_name;?>">
-                            <input type="hidden" id="credits" name="credits" value="<?php echo $course->credits;?>">
-                            <button type="submit" name="takenCourse" class="btn btn-primary"
-                                style="width: 50px">NO</button>
-                        </form>
+                        <?php echo $c->gpa;?>
                     </td>
                 </tr>
-                <?php endif; ?>
                 <?php endforeach;?>
             </tbody>
         </table>
+    </div>
+    </div>
 
+    <!---------------------------------------------->
 
-        <table class="table" style='background-color: rgba(255, 255, 255, 0.3);'>
-            <h2 class="mt-3">Taken Course</h2>
+    <table class="table" style='background-color: rgba(255, 255, 255, 0.3);'>
+            <h2 class="mt-3">Result of completed/registered courses</h2>
             <thead>
                 <tr>
-                    <th scope="col">Course ID</th>
-                    <th scope="col">Course Name</th>
-                    <th scope="col">Credits</th>
-                    <th scope="col">Mandatory?</th>
-                    <th scope="col">Taken?</th>
+                    <th scope="col">Semester</th>
+                    <th scope="col">Course</th>
+                    <th scope="col">Course Title</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Credit</th>
+                    <th scope="col">Result</th>
+                    <th scope="col">Comments</th>
                 </tr>
             </thead>
             <tbody>
                 <?php 
-                $getTakenCourseList=$connect->prepare("SELECT * FROM `tb_preregstration` WHERE student=$activeId" );
-                $getTakenCourseList->execute();
-                $getTakenCourseList=$getTakenCourseList->fetchAll(PDO::FETCH_OBJ);
+                $getCompletedCourse=$connect->prepare("SELECT `cgpa`, `semester`, `course`, `course_title`, `type`, `result`, `cradit` FROM `tb_studied_info` 
+                                                        WHERE student=$studentId order by semester desc" );
+                $getCompletedCourse->execute();
+                $getCompletedCourses=$getCompletedCourse->fetchAll(PDO::FETCH_OBJ);
                 
-                foreach($getTakenCourseList as $course):
+                foreach($getCompletedCourses as $c):
                 ?>
-                <tr>
+               <tr>
                     <th scope="row">
-                        <?php echo $course->course_id;?>
+                        <?php echo $c->semester;?>
                     </th>
                     <td>
-                        <?php echo $course->course_name;?>
+                        <?php echo $c->course;?>
                     </td>
                     <td>
-                        <?php echo $course->credits;?>
+                        <?php echo $c->course_title;?>
                     </td>
-                    <td>NO</td>
-                    <td>YES</td>
+                    <td>
+                        <?php echo $c->type;?>
+                    </td>
+                    <td>
+                        <?php echo $c->cradit;?>
+                    </td>
+                    <td>
+                        <?php echo $c->result;?>
+                    </td>
+                    <td>
+                        <?php echo ' - ';?>
+                    </td>
                 </tr>
                 <?php endforeach;?>
             </tbody>
         </table>
+
     </div>
 
 

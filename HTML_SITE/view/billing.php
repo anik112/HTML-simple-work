@@ -127,107 +127,132 @@ $getCourses=$getCourse->fetchAll(PDO::FETCH_OBJ);
 
 
     <div class="col-sm-8" id="mid-size">
+
+    <div class="card">
+    <?php 
+    $runingSemester=0;
+    $studentId='';
+    $getTakenUserDoc=$connect->prepare("SELECT `sur_name`, `nick_name`, `runing_semester`, `student_id` FROM `tb_user_info` WHERE id=$activeId");
+    $getTakenUserDoc->execute();
+    $getTakenUserDocument=$getTakenUserDoc->fetchAll(PDO::FETCH_OBJ);
+    foreach($getTakenUserDocument as $c){
+        $runingSemester=$c->runing_semester;
+        $studentId=$c->student_id;
+    }
+    
+    $totalPayable=0;
+    $getDuesAmount=$connect->prepare("SELECT sum(payable) as payableAmt FROM `tb_dues` WHERE semester=$runingSemester and student=$studentId" );
+                $getDuesAmount->execute();
+                $getDuesAmounts=$getDuesAmount->fetchAll(PDO::FETCH_OBJ);
+                foreach($getDuesAmounts as $c){
+                    $totalPayable=$c->payableAmt;
+                }
+
+    $totalPayment=0;
+    $getPayment=$connect->prepare("SELECT sum(`total_paid`) as paidAmt FROM `tb_billing` WHERE semester=$runingSemester and student=$studentId" );
+                $getPayment->execute();
+                $getPaymentAmounts=$getPayment->fetchAll(PDO::FETCH_OBJ);
+                foreach($getPaymentAmounts as $c){
+                    $totalPayment=$c->paidAmt;
+                }
+
+    ?>
+
+        <div class="card-header" style="text-align: center;"><h4>Billing History</h4></div>
+        <div class="card-body">
+            <h5>Semester: <?php echo $runingSemester;?></h5>
+            <h5>Student: <?php echo $userName;?> (<?php echo $studentId; ?>)</h5>
+            <h5>Adviser: <?php echo 'Anik' ?></h5>
+            <hr class="style2">
+            <h5>Total Payable: <?php echo $totalPayable; ?></h5>
+            <h5>Total Payment: <?php echo $totalPayment; ?></h5>
+            <h5>Total Outstanding Bill: <?php echo ($totalPayable-$totalPayment);?></h5>
+        </div>
+    </div>
+
         <table class="table" style=' background-color: rgba(255, 255, 255,  0.5); '>
-        <h2 class="mt-3">Offer Course</h2>
+        <h2 class="mt-3">Total Outstanding Bill's</h2>
             <thead>
                 <tr>
-                    <th scope="col">Course ID</th>
-                    <th scope="col">Course Name</th>
-                    <th scope="col">Credits</th>
-                    <th scope="col">Mandatory?</th>
-                    <th scope="col">Taken?</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Head</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Discount</th>
+                    <th scope="col">VAT</th>
+                    <th scope="col">Payable</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-
-                if(isset($_POST["takenCourse"])){
-                    $getSemester=$connect->prepare("SELECT `runing_semester` FROM `tb_user_info` WHERE id=$activeId");
-                    $getSemester->execute();
-                    $getSemesterInfo=$getSemester->fetchAll(PDO::FETCH_OBJ);
-                    foreach($getSemesterInfo as $smsInfo){
-                        $semester=$smsInfo->runing_semester;
-                        break;
-                    }
-
-                    if(isset($_POST["course_id"])){$cus_id=$_POST["course_id"];}
-                    if(isset($_POST["course_name"])){$cus_name=$_POST["course_name"];}
-                    if(isset($_POST["credits"])){$cus_crds=$_POST["credits"];}
-
-                    if($activeId>0 && $semester>0){
-                        $sqlTakeCourse="INSERT INTO `tb_preregstration`(`course_id`, `course_name`, `credits`, `mandatory`, `taken`, `adviser`, `semester`, `student`) 
-                        VALUES ('$cus_id','$cus_name','$cus_crds','NO','YES','Anik',$semester,$activeId)";
-                        $sqlTakeCourses=$connect->prepare($sqlTakeCourse);
-                        $sqlTakeCourses->execute() or die("Not insert"); 
-                    } 
-                } 
-                foreach($getCourses as $course):
-                $getTakenCourse=$connect->prepare("SELECT count(id) cut FROM `tb_preregstration` WHERE student=$activeId AND course_id='$course->course_id'" );
-                $getTakenCourse->execute();
-                $getTakenCourses=$getTakenCourse->fetchAll(PDO::FETCH_OBJ);
-                foreach($getTakenCourses as $c){
-                    $getTakenCourse=$c->cut;
-                }
-            ?>
-                <?php if($getTakenCourse==0): ?>
+                $getDues=$connect->prepare("SELECT `id`, `semester`, `student`, `adviser`, `date`, `head`, `amount`, `discount`, `dve_vat`, `vat_adjusted`, `payable` FROM `tb_dues` WHERE student=$studentId" );
+                $getDues->execute();
+                $getDuesArray=$getDues->fetchAll(PDO::FETCH_OBJ);
+                foreach($getDuesArray as $c):
+                ?>
                 <tr>
                     <th scope="row">
-                        <?php echo $course->course_id;?>
+                        <?php echo $c->date;?>
                     </th>
                     <td>
-                        <?php echo $course->course_name;?>
+                        <?php echo $c->head;?>
                     </td>
                     <td>
-                        <?php echo $course->credits;?>
+                        <?php echo $c->amount;?>
                     </td>
-                    <td>NO</td>
                     <td>
-                        <form class="" method="POST" action="" enctype="multipart/form-data">
-                            <input type="hidden" id="course_id" name="course_id" value="<?php echo $course->course_id;?>">
-                            <input type="hidden" id="course_name" name="course_name" value="<?php echo $course->course_name;?>">
-                            <input type="hidden" id="credits" name="credits" value="<?php echo $course->credits;?>">
-                            <button type="submit" name="takenCourse" class="btn btn-primary"
-                                style="width: 50px">NO</button>
-                        </form>
+                        <?php echo $c->discount;?>
+                    </td>
+                    <td>
+                        <?php echo $c->vat_adjusted;?>
+                    </td>
+                    <td>
+                        <?php echo $c->payable;?>
                     </td>
                 </tr>
-                <?php endif; ?>
                 <?php endforeach;?>
             </tbody>
         </table>
 
 
         <table class="table" style='background-color: rgba(255, 255, 255, 0.3);'>
-            <h2 class="mt-3">Taken Course</h2>
+            <h2 class="mt-3">Total Paid</h2>
             <thead>
                 <tr>
-                    <th scope="col">Course ID</th>
-                    <th scope="col">Course Name</th>
-                    <th scope="col">Credits</th>
-                    <th scope="col">Mandatory?</th>
-                    <th scope="col">Taken?</th>
+                    <th scope="col">Paid Date</th>
+                    <th scope="col">Head</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Discount</th>
+                    <th scope="col">VAT</th>
+                    <th scope="col">Payable</th>
                 </tr>
             </thead>
             <tbody>
                 <?php 
-                $getTakenCourseList=$connect->prepare("SELECT * FROM `tb_preregstration` WHERE student=$activeId" );
-                $getTakenCourseList->execute();
-                $getTakenCourseList=$getTakenCourseList->fetchAll(PDO::FETCH_OBJ);
+                $getPaidAmt=$connect->prepare("SELECT `id`, `semester`, `student`,`paidDate`, `adviser`, `total_outstanding`, `total_payable`, `total_paid`, `dues`, `payments`, `vat_amount`, `discount` FROM `tb_billing` WHERE student=$studentId" );
+                $getPaidAmt->execute();
+                $getPaidAmts=$getPaidAmt->fetchAll(PDO::FETCH_OBJ);
                 
-                foreach($getTakenCourseList as $course):
+                foreach($getPaidAmts as $c):
                 ?>
-                <tr>
+               <tr>
                     <th scope="row">
-                        <?php echo $course->course_id;?>
+                        <?php echo $c->paidDate;?>
                     </th>
                     <td>
-                        <?php echo $course->course_name;?>
+                        <?php echo $c->head;?>
                     </td>
                     <td>
-                        <?php echo $course->credits;?>
+                        <?php echo $c->total_paid;?>
                     </td>
-                    <td>NO</td>
-                    <td>YES</td>
+                    <td>
+                        <?php echo $c->discount;?>
+                    </td>
+                    <td>
+                        <?php $vat_adjusted=0; echo $c->vat_adjusted;?>
+                    </td>
+                    <td>
+                        <?php echo $c->total_paid;?>
+                    </td>
                 </tr>
                 <?php endforeach;?>
             </tbody>

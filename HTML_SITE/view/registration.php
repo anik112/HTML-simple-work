@@ -59,7 +59,7 @@ if(isset($_REQUEST['number'])){
                 </div>
             <?php endif; ?>
                 <!-- get all data from users & send [ ./core/registration.php ] -->
-                <form action="../core/registration.php" method="post" enctype="multipart/form-data" >
+                <form action="../functions/registration.php" method="post" enctype="multipart/form-data" >
                     <div class='float-left'>
                         <div class='form-group'>
                             <?php if(!empty($surnameError)): ?>
