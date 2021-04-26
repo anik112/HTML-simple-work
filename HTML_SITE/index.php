@@ -31,7 +31,8 @@ $routes = [
     'billing'=>'./view/billing.php',
     'result'=>'./view/result.php',
     'notification'=>'./view/notification.php',
-    'editProfile'=>'./view/pofile/edit-profile.php'
+    'editProfile'=>'./view/pofile/edit-profile.php',
+    'chat'=>'./view/chat.php',
 ];
 
  

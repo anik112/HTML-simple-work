@@ -8,7 +8,7 @@ require './view/header.php';
         </div>
         <div class="card-body">
             <?php
-            $getNotification=$connect->prepare("SELECT `friend_id`, `post_id`, `friend_name`, `content` FROM `tb_notification_list` WHERE `user_id`=$activeId;" );
+            $getNotification=$connect->prepare("SELECT `friend_id`, `post_id`, `friend_name`, `content` FROM `tb_notification_list` WHERE `user_id`=$activeId order by id desc;" );
             $getNotification->execute();
             $getNotifications=$getNotification->fetchAll(PDO::FETCH_OBJ);
             foreach($getNotifications as $c):
@@ -17,10 +17,10 @@ require './view/header.php';
             <div class="alert alert-info">
                 <div class="container">
                     <div class="alert-icon">
-                        <i class="material-icons">info_outline</i>
+                        <i class="material-icons"><b><?php echo $c->friend_name; ?></b></i>
                     </div>
 
-                    <b>Info alert:</b> You've got some friends nearby, stop looking at your phone and find them...
+                    <b>Dtls:</b> <?php echo $c->friend_name." ".$c->content; ?>
                 </div>
             </div>
             <?php endforeach; ?>

@@ -8,7 +8,7 @@ if(isset($_GET['id'])){
     $frndID=$_GET['id'];
 }
 
-$sql="SELECT id, sur_name, nick_name, mobile, email, birthday, gender, current_city, home_town, interested_in, languages, relationship, about_you, image FROM tb_user_info WHERE id=$frndID";
+$sql="SELECT id, sur_name, nick_name, mobile, email, birthday, gender, current_city, home_town, interested_in, languages, relationship, about_you, 	image_url FROM tb_user_info WHERE id=$frndID";
 $getData = $connect->prepare($sql);
 $getData->execute();
 $dataList=$getData->fetchAll(PDO::FETCH_OBJ);
@@ -18,6 +18,7 @@ $checkIsFrnd = $connect->prepare($sql);
 $checkIsFrnd->execute();
 $checkIsFrndTmp=$checkIsFrnd->fetchAll(PDO::FETCH_OBJ);
 $checkIsFrnd=0;
+$frindsName='';
 
 foreach($checkIsFrndTmp as $tmp){
     $checkIsFrnd=$tmp->friends_id;
@@ -28,16 +29,22 @@ if(isset($_POST['send-fnd-req']) && $frndID>0){
     $sql="INSERT INTO `tb_frends_list`(`user_id`, `friends_id`) VALUES ($userId,$frndID)";
     $inertFndData = $connect->prepare($sql);
     $inertFndData->execute();
+
+    $sql1="INSERT INTO `tb_notification_list`(`friend_id`, `user_id`, `post_id`, `friend_name`, `content`) VALUES ($userId,$frndID,0,'$userName',' is connect with you. !')";
+    $inertFndData1 = $connect->prepare($sql1);
+    $inertFndData1->execute();
 }
 
 
 ?>
 
-<?php foreach($dataList as $data): ?>
+<?php foreach($dataList as $data): 
+    $frindsName=$data->sur_name;
+    ?>
     <div class="row">
         <div id="fram-cover">
             <div class="col-sm-8 border rounded" id="cover-image">
-                <img src="./image/avatar.png" class="rounded-circle mx-auto d-block" id="pro-img" alt="...">
+                <img src="<?php echo  $data->image_url;?>" class="rounded-circle mx-auto d-block" id="pro-img" alt="...">
             </div>
         </div>
     </div>
@@ -185,7 +192,7 @@ if(isset($_POST['send-fnd-req']) && $frndID>0){
                                     <img src="./image/avatar.png" class="rounded-circle mx-auto d-block"
                                         id="post-head-pro-img" alt="...">
                                     <div class="resizer">
-                                        <h3 id="post-aut-name"><?php echo $userName; ?></h3>
+                                        <h3 id="post-aut-name"><?php echo $frindsName; ?></h3>
                                     </div>
                                 </div>
                                 <p style="padding: 5px; margin: 5px;">

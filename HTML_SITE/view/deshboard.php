@@ -300,7 +300,7 @@ $dataList=$getData->fetchAll(PDO::FETCH_OBJ);
                             <?php echo $fnds->sur_name ?>
                         </a></h5>
                     <div class='card-body' style="margin:2px; padding: 0px;">
-                        <img src="./image/avatar.png" class="rounded-circle mx-auto d-block mx-3"
+                        <img src="<?php echo $fnds->image_url;?>" class="rounded-circle mx-auto d-block mx-3"
                             id="small-head-pro-img" alt="...">
                     </div>
                 </div>

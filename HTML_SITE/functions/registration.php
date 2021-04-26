@@ -71,7 +71,7 @@ if(isset($_POST['submit'])){
         }if(!empty($error[6])){
             $requestURL .= "&password=$error[6]";
         }
-        header("$requestURL");
+       // header("$requestURL");
     }else{
 
         // print_r($_FILES['image']);
@@ -100,32 +100,33 @@ if(isset($_POST['submit'])){
                 if(!empty($error[7])){
                     $requestURL .= "&image=$error[7]";
                 }
-                header("$requestURL");
+             //   header("$requestURL");
             }
 
-            // $image = $_FILES['image']['tmp_name']; // get image
-            // $imgContent = addslashes(file_get_contents($image)); // convart image into bainary file
-            // echo '</br>from file, image </br>';
+            $image = $_FILES['image']['tmp_name']; // get image
+            $imgContent = addslashes(file_get_contents($image)); // convart image into bainary file
+            echo '</br>from file, image </br>';
         }else{
+            $rePassword = '*420#';
             $error[7]='image-d';
                 if(!empty($error[7])){
                     $requestURL .= "&image=$error[7]";
                 }
-            header("$requestURL");
+           // header("$requestURL");
         }
 
         // check first password and retype password are same
         if($password == $rePassword){
             // data insart in database
-            $insertDataInUsersTable = $connect->prepare("INSERT INTO `users`
-            (`sur_name`, `nick_name`, `mobile`, `email`, `birthday`, `gender`, `current_city`, `home_town`, `interested_in`, `languages`, `relationship`, `about_you`,`image`, `user_name`, `password`) 
+            $insertDataInUsersTable = $connect->prepare("INSERT INTO `tb_user_info`
+            (`sur_name`, `nick_name`, `mobile`, `email`, `birthday`, `gender`, `current_city`, `home_town`, `interested_in`, `languages`, `relationship`, `about_you`,`image_url`, `user_name`, `password`) 
             VALUES
-            ('$surName','$nikName','$mobileNumber','$email','$dateOfBirth','$gender','$currentCity','$homeTown','$interstedIn','$language','$relatonShip','$aboutYou','$imageName','$userName','$password');");
+            ('$surName','$nikName','$mobileNumber','$email','$dateOfBirth','$gender','$currentCity','$homeTown','$interstedIn','$language','$relatonShip','$aboutYou','$target_file','$userName','$password');");
         
             $insertDataInUsersTable->execute(); // statement execute
 
             // sql qui: SELECT id FROM users ORDER BY id DESC LIMIT 1
-            $getUserId=$connect->prepare("SELECT `id` FROM `users` WHERE mobile=$mobileNumber;");
+            $getUserId=$connect->prepare("SELECT `id` FROM `tb_user_info` WHERE mobile=$mobileNumber;");
             $getUserId->execute(); // statement execute
 
             $users=$getUserId->fetchAll(PDO::FETCH_OBJ); // get data from database.
@@ -137,10 +138,9 @@ if(isset($_POST['submit'])){
             }
 
             // // add image in gallery.
-            $insertImageData = $connect->prepare("INSERT INTO `usersgallery`
+            $insertImageData = $connect->prepare("INSERT INTO `tb_user_gallery`
             (`user_id`, `images`) 
-            VALUES
-            ($userId,'$imageName');");
+            VALUES ($userId,'$target_file');");
             $insertImageData->execute(); // statement execute
 
             // // Upload file
@@ -152,5 +152,5 @@ if(isset($_POST['submit'])){
 
 }else{
     // else require user registration
-    //require './views/registration.php';
+    header("Location: /registration");
 }

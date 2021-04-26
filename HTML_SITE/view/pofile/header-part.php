@@ -1,7 +1,7 @@
         <div class="row">
             <div id="fram-cover">
                 <div class="col-sm-8 border rounded" id="cover-image">
-                    <img src="./image/avatar.png" class="rounded-circle mx-auto d-block" id="pro-img" alt="...">
+                    <img src="<?php echo $user_image;?>" class="rounded-circle mx-auto d-block" id="pro-img" alt="...">
 
                     <nav class="navbar navbar-expand navbar-dark bg-dark  border rounded">
                         <div class="collapse navbar-collapse" id="frm-link">

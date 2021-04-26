@@ -44,6 +44,7 @@ if(isset($_POST['search'])){
     <link rel="stylesheet" href="./public/profile-css.css">
     <link rel="stylesheet" href="./public/view.css">
     <link rel="stylesheet" href="./public/ac-panel.css">
+    <link rel="stylesheet" href="./public/chat.css">
     <link href="./public/font-awesome.css" rel="stylesheet">
 </head>
 

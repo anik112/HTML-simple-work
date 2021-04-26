@@ -17,12 +17,11 @@
                             }
                             
                             if(isset($_FILES["images"])){
-                                $target_dir = "uploads/";
                                 $file_tmp=$_FILES['images']['tmp_name'];
                                 $file=$_FILES["images"];
                                 if(strlen($file_tmp)>0){
                                     $target_file = basename($_FILES["images"]["name"]);
-                                    $target_file="C:\Users\carev\Documents/$target_file";
+                                    $target_file="./images/".$target_file;
                                     move_uploaded_file($file_tmp,$target_file);
                                 }else{
                                     $target_file=""; 
@@ -83,7 +82,7 @@
                    if($comment_content!=null){
                         $inserData=$connect->prepare("INSERT INTO `tb_comments_list`(`post_id`, `user_id`, `user_name`, `content`) VALUES ($post->id,$userId,'$userName','$comment_content')");
                         $inserData->execute() or die("Not insert");
-                        header("Location: /profile");
+                        //header("Location: /profile");
                    }
                 }
 
@@ -104,7 +103,6 @@
                 if(isset($_POST["like$post->id"])){
                     $inserData=$connect->prepare("INSERT INTO `tb_likes_list` (`post_id`, `user_id`, `user_name`) VALUES ($post->id,$userId,'$userName')");
                     $inserData->execute() or die("Not insert");
-                    header("Location: /profile");
                 }
                 ?>
 

@@ -67,6 +67,7 @@ if(isset($_REQUEST['number'])){
                                 <strong>Danger!</strong> <?php echo $massage["$surnameError"];?>
                                 </div>
                             <?php endif; ?>
+                            <input type="text" name="studentID" id="" class='form-control my-2' placeholder='Student ID' required>
                             <input type="text" name="surName" id="" class='form-control my-2' placeholder='Sur name' required>
                             <input type="text" name="nikName" id="" class='form-control my-2' placeholder='Nik name'>
                             <?php if(!empty($numberError)): ?>
