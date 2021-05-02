@@ -8,16 +8,18 @@ if(isset($_POST['submit'])){
 
     $userName=$_POST['userName'];  // get username from user.
     $passCode=$_POST['userPassword'];   // get passcode from user.
+    $type=$_POST['type'];
     //  echo $passCode.'</br>';
     $databasePassword=null; // database user password.
     $userId=null; // declare user id.
     $name=null; // declare name variable.
     $image=null; // declare image variable..
+    $dType='';
 
     $error=null; // declare null error.
 
     // write quriey for get data from database.
-    $getData = $connect->prepare("SELECT id,sur_name,password,image FROM `tb_user_info` WHERE user_name='$userName';");
+    $getData = $connect->prepare("SELECT id,sur_name,password,image_url,type FROM `tb_user_info` WHERE user_name='$userName';");
     $getData->execute(); //query execute.
     $allData=$getData->fetchAll(PDO::FETCH_OBJ); // petch data in a array.
     // print_r($allData);
@@ -29,10 +31,7 @@ if(isset($_POST['submit'])){
         $userId = $data->id;
         $name = $data->sur_name;
         $image= $data->image;
-        echo $databasePassword;
-        echo $userId;
-        echo $name;
-        echo $image;
+        $dType= $data->type;
     }
 
     // check user password and database password are same
@@ -66,7 +65,16 @@ if(isset($_POST['submit'])){
             $updateActiveStatus->execute() or die('Sorry data not insert.. ative status update'); // statement execute
         }
 
-        header("Location: /profile"); // set url in go to deshbord.
+        if($type=='user' && $type==$dType){
+            header("Location: /profile"); // set url in go to deshbord.
+        }elseif($type=='user' && $type==$dType){
+            header("Location: /adPanel"); 
+        }elseif($type=='user' && $type==$dType){
+            header("Location: /acPanel");
+        }else{
+            header("Location: /login");
+        }
+        
     }else{
         $error='sorry your password is incorrect. please try more.';
     }
@@ -103,6 +111,11 @@ if(isset($_POST['submit'])){
                                     <input type="text" name="userName" id="" class="form-control mb-2" placeholder="User Name" aria-describedby="helpId">
                                     <input type="password" name="userPassword" id="" class="form-control mb-2" placeholder="Password" aria-describedby="helpId">
                                     <input type="submit" name='submit' value="Login" class='btn btn-primary mb-2 mt-4' style="width: 100%;">
+                                    </div>
+                                    <div class="form-group">
+                                    <input type="radio" name="type" value="user" class='mx-2' checked> User
+                                    <input type="radio" name="type" value="accountant" class='mx-2' > Accoutant
+                                    <input type="radio" name="type" value="admin " class='mx-2' > Admin
                                     </div>
                                 </form>
 

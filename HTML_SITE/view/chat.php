@@ -36,6 +36,10 @@ require './view/header.php';
             $insertChat=$connect->prepare("INSERT INTO `tb_chat_list`(`user_id`, `user_name`, `friend_id`, `friend_name`, `sending_text`, `timestamp`, `in_out`) 
                                             VALUES ($activeId,'$userName',$fID,'$fName','$msg','$currentDate',1);");
             $insertChat->execute();
+
+            $insertChat2=$connect->prepare("INSERT INTO `tb_chat_list`(`user_id`, `user_name`, `friend_id`, `friend_name`, `sending_text`, `timestamp`, `in_out`) 
+                                            VALUES ($fID,'$userName',$activeId,'$fName','$msg','$currentDate',0);");
+            $insertChat2->execute();
           }
 
           $sqlFrinds="SELECT id, sur_name, image_url FROM tb_user_info WHERE id IN (select friends_id from tb_frends_list where user_id=$activeId)";

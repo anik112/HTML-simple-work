@@ -3,8 +3,6 @@
 require '../database/dbConnect.php';
 require '../function/databaseFunction.php';
 
-echo 'from registration in core';
-
 $error=null;
 
 
@@ -31,6 +29,7 @@ if(isset($_POST['submit'])){
     $userName=$_POST['userName'];
     $password=$_POST['password'];
     $rePassword=$_POST['retPassword'];
+    $type=$_POST['type'];
 
     $emailFilter = "/[a-zA-Z0-9_-.+]+@[a-zA-Z0-9-]+.[a-zA-Z]+/";
     $requestURL="Location: /registration?";
@@ -100,7 +99,7 @@ if(isset($_POST['submit'])){
                 if(!empty($error[7])){
                     $requestURL .= "&image=$error[7]";
                 }
-             //   header("$requestURL");
+                header("$requestURL");
             }
 
             $image = $_FILES['image']['tmp_name']; // get image
@@ -112,16 +111,16 @@ if(isset($_POST['submit'])){
                 if(!empty($error[7])){
                     $requestURL .= "&image=$error[7]";
                 }
-           // header("$requestURL");
+            header("$requestURL");
         }
 
         // check first password and retype password are same
         if($password == $rePassword){
             // data insart in database
             $insertDataInUsersTable = $connect->prepare("INSERT INTO `tb_user_info`
-            (`sur_name`, `nick_name`, `mobile`, `email`, `birthday`, `gender`, `current_city`, `home_town`, `interested_in`, `languages`, `relationship`, `about_you`,`image_url`, `user_name`, `password`) 
+            (`sur_name`, `nick_name`, `mobile`, `email`, `birthday`, `gender`, `current_city`, `home_town`, `interested_in`, `languages`, `relationship`, `about_you`,`image_url`, `user_name`, `password`, `type`) 
             VALUES
-            ('$surName','$nikName','$mobileNumber','$email','$dateOfBirth','$gender','$currentCity','$homeTown','$interstedIn','$language','$relatonShip','$aboutYou','$target_file','$userName','$password');");
+            ('$surName','$nikName','$mobileNumber','$email','$dateOfBirth','$gender','$currentCity','$homeTown','$interstedIn','$language','$relatonShip','$aboutYou','$target_file','$userName','$password','$type');");
         
             $insertDataInUsersTable->execute(); // statement execute
 

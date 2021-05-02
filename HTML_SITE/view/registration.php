@@ -136,9 +136,15 @@ if(isset($_REQUEST['number'])){
                             <input type="password" name="retPassword" id="" class='form-control my-2' placeholder='Retype password'>
                         </div>
                         <div class='form-group'>
+                            <input type="radio" name="type" value="user" class='mx-2' checked> User
+                            <input type="radio" name="type" value="accountant" class='mx-2' > Accoutant
+                            <input type="radio" name="type" value="admin " class='mx-2' > Admin
+                        </div>
+                        <div class='form-group'>
                             <input type="submit" name='submit' value="submit" class='btn btn-outline-primary px-5'>
                             <a href="/login" class='font-weight-bold text-info mx-3'>| login..?</a>
                         </div>
+                        
                     </div>      
                 </form>
             </div>
